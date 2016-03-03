@@ -1,97 +1,111 @@
-.carousel {
-    .carousel-inner {
+.artwork-hero-inner,
+.carousel-inner {
+    height: 750px;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and #{$screen-xs} {
+        height: 600px;
+    }
+
+    .carousel-image,
+    .artwork-hero-image {
+        width: 50%;
         height: 750px;
-        overflow: hidden;
 
         @media screen and #{$screen-xs} {
             height: 600px;
+            width: 100%;
         }
 
-        .item {
-            > .carousel-image {
-                width: 50%;
-                height: 750px;
-
-                @media screen and #{$screen-xs} {
-                    height: 600px;
-                    width: 100%;
-                }
-
-                img {
-                    height: 100%;
-                    width: auto;
-                }
-            }
-            > .carousel-details-container {
-                width: 50%;
-                position: absolute;
-                left: 50%;
-                top: 0;
-                background: $accentgreen;
-                bottom: 0;
-
-                @media screen and #{$screen-xs} {
-                    width: 100%;
-                    left: 0;
-                    background: rgba($accentgreen, 0.85);
-                }
-
-                img {
-                    width: 100%;
-                    
-                    @media screen and #{$screen-xs} {
-                        margin: 50px auto 0;
-                        display: block;
-                        width: 90%;
-                    }
-                }
-                .carousel-details {
-                    padding: 50px;
-                    text-align: center;
-
-                    @media screen and #{$screen-gtmd} {
-                        padding: 50px 60px;
-                    }
-
-                    h1 {
-                        color: white;
-                        font-size: 6.0rem;
-                        margin: 0 0 25px;
-                        
-                        @media screen and #{$screen-xs} {
-                            font-size: 4.8rem;
-                        }
-                    }
-                    h3 {
-                        color: white;
-                        margin: 0 0 10px;
-                    }
-                    p {
-                        font-size: 2.1rem;
-                        color: white;
-                        margin: 0 0 25px;
-
-                        @media screen and #{$screen-xs} {
-                            font-size: 1.8rem;
-                        }
-                    }
-                }
-            }
+        img {
+            height: 100%;
+            width: auto;
         }
     }
-    .carousel-indicators {
-        bottom: -50px;
+    .carousel-details-container,
+    .artwork-hero-details-container {
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        background: $accentgreen;
+        bottom: 0;
 
-        li {
-            background: lighten($midgray, 10%);
-            border: none;
-            width: 14px;
-            height: 14px;
-            margin: 0 2px;
+        @media screen and #{$screen-xs} {
+            width: 100%;
+            left: 0;
+            background: rgba($accentgreen, 0.85);
+        }
 
-            &.active {
-                background: $accentgreen;
+        img {
+            width: 100%;
+            
+            @media screen and #{$screen-xs} {
+                margin: 50px auto 0;
+                display: block;
+                width: 90%;
             }
+        }
+        .carousel-details,
+        .artwork-hero-details {
+            padding: 50px;
+            text-align: center;
+
+            @media screen and #{$screen-gtmd} {
+                padding: 50px 60px;
+            }
+
+            h1 {
+                color: white;
+                font-size: 6.0rem;
+                margin: 0 0 25px;
+                
+                @media screen and #{$screen-xs} {
+                    font-size: 4.8rem;
+                }
+            }
+            h3 {
+                color: white;
+                margin: 0 0 10px;
+            }
+            p {
+                font-size: 2.1rem;
+                color: white;
+                margin: 0 0 25px;
+                line-height: 1.6;
+
+                @media screen and #{$screen-xs} {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .btn {
+                width: 85%;
+
+                span.glyphicon {
+                    margin-right: 8px;
+                    font-size: 90%;
+                }
+            }
+        }
+        .artwork-hero-details {
+            padding-top: 75px;
+        }
+    }
+}
+.carousel-indicators {
+    bottom: -50px;
+
+    li {
+        background: lighten($midgray, 10%);
+        border: none;
+        width: 14px !important;
+        height: 14px !important;
+        margin: 0 2px !important;
+
+        &.active {
+            background: $accentgreen;
         }
     }
 }

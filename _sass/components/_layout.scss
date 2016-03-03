@@ -5,3 +5,42 @@ main {
     padding-right: 30px;
     padding-left: 30px;
 }
+.page {
+    img {
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+    .caption {
+        display: table;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        margin-bottom: 15px;
+
+        > img {
+            padding: 0;
+            border: none;
+            display: block;
+            max-width: 100%;
+            margin: 0;
+        }
+        > figcaption {
+            border: none;
+            padding: 15px 10px;
+            background: $lightgray;
+            font-size: small;
+            font-style: italic;
+            text-align: center;
+            display: table-caption;
+            caption-side: bottom;
+            max-width: none;
+        }
+    }
+}
+
+.align-right {
+    float: right;
+    margin-left: 30px;
+}
+.align-left {
+    float: left;
+    margin-right: 30px;
+}
