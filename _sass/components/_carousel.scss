@@ -1,0 +1,16 @@
+.carousel {
+    .carousel-inner {
+        height: 700px;
+        overflow: hidden;
+
+        @media screen and #{$screen-xs} {
+        
+        }
+
+        .item {
+            > img {
+                width: 50%;
+            }
+        }
+    }
+}

@@ -24,4 +24,159 @@
   -o-animation: fadeIn 1s 1 forwards;
   animation: fadeIn 1s 1 forwards; }
 
+body {
+  font-family: "PT Serif", serif; }
+
+a {
+  text-decoration: none;
+  transition: 0.5s all; }
+
+main {
+  margin-top: 100px; }
+
+.container-fluid {
+  padding-right: 30px;
+  padding-left: 30px; }
+
+nav.navbar {
+  background: white;
+  border: none;
+  height: 100px;
+  transition: 0.5s all; }
+  @media screen and (min-width: 768px) {
+    nav.navbar.scrolled {
+      height: 80px; }
+      nav.navbar.scrolled .navbar-brand {
+        font-size: 2.0rem;
+        padding: 20px 15px; }
+        nav.navbar.scrolled .navbar-brand span {
+          font-size: 1.3rem;
+          margin-top: 3px; }
+      nav.navbar.scrolled .navbar-nav > li a {
+        padding: 30px 0 6px;
+        font-size: 1.3rem; } }
+  nav.navbar .navbar-brand {
+    padding: 25px 15px;
+    height: 100px;
+    font-family: "Oswald", sans-serif;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    color: #231f20;
+    transition: 0.5s all; }
+    nav.navbar .navbar-brand span {
+      font-family: "PT Serif", serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      text-transform: none;
+      display: block;
+      margin-top: 8px;
+      color: #8DAC62;
+      transition: 0.5s all; }
+  nav.navbar .navbar-nav > li.open > a {
+    background: none;
+    border-bottom: 1px solid #f1f2f2 !important; }
+  nav.navbar .navbar-nav > li.open > ul {
+    padding: 0; }
+    @media screen and (min-width: 768px) {
+      nav.navbar .navbar-nav > li.open > ul {
+        right: -80px;
+        top: 120%;
+        border-radius: 0;
+        border: none;
+        width: 260px; } }
+    nav.navbar .navbar-nav > li.open > ul > li.active > a {
+      background: #8DAC62; }
+    nav.navbar .navbar-nav > li.open > ul > li > a {
+      padding: 10px 20px;
+      border-bottom: 1px solid #f1f2f2;
+      text-align: center; }
+      @media screen and (max-width: 767px) {
+        nav.navbar .navbar-nav > li.open > ul > li > a {
+          padding-top: 15px;
+          padding-bottom: 15px; } }
+  nav.navbar .navbar-nav > li.active > a {
+    background: none;
+    color: #231f20; }
+    @media screen and (min-width: 768px) {
+      nav.navbar .navbar-nav > li.active > a {
+        border-bottom: 3px solid #8DAC62; } }
+  nav.navbar .navbar-nav > li > a {
+    padding: 40px 0 6px;
+    margin: 0 15px;
+    font-size: 1.5rem;
+    transition: 0.5s all; }
+    @media screen and (min-width: 768px) {
+      nav.navbar .navbar-nav > li > a {
+        position: relative;
+        top: 0; } }
+    nav.navbar .navbar-nav > li > a:hover, nav.navbar .navbar-nav > li > a:focus, nav.navbar .navbar-nav > li > a:active {
+      background: none !important; }
+      @media screen and (min-width: 768px) {
+        nav.navbar .navbar-nav > li > a:hover, nav.navbar .navbar-nav > li > a:focus, nav.navbar .navbar-nav > li > a:active {
+          top: -5px; } }
+    @media screen and (max-width: 767px) {
+      nav.navbar .navbar-nav > li > a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f1f2f2;
+        margin: 0;
+        text-align: center; } }
+  @media screen and (max-width: 767px) {
+    nav.navbar .navbar-toggle {
+      border: none;
+      margin-top: 28px;
+      margin-right: 10px; }
+      nav.navbar .navbar-toggle:focus, nav.navbar .navbar-toggle:active, nav.navbar .navbar-toggle:hover {
+        background: none; }
+        nav.navbar .navbar-toggle:focus .icon-bar, nav.navbar .navbar-toggle:active .icon-bar, nav.navbar .navbar-toggle:hover .icon-bar {
+          background-color: #8DAC62; }
+      nav.navbar .navbar-toggle .icon-bar {
+        width: 32px;
+        transition: 0.5s all; }
+        nav.navbar .navbar-toggle .icon-bar + .icon-bar {
+          margin-top: 6px; }
+    nav.navbar .navbar-collapse {
+      padding: 0px;
+      top: -5px;
+      position: relative;
+      background: white;
+      margin: 0 -30px;
+      box-shadow: 0 5px 20px transparent;
+      transition: 0.5s all; }
+      nav.navbar .navbar-collapse.in {
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25); }
+      nav.navbar .navbar-collapse > ul {
+        margin: 0; } }
+
+footer {
+  margin-top: 100px;
+  padding: 50px 0; }
+  footer h1 {
+    margin: 0 0 8px;
+    font-family: "Oswald", sans-serif;
+    font-size: 2.1rem;
+    text-transform: uppercase;
+    color: #A7A9AC; }
+  footer h2 {
+    margin: 0 0 20px;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #A7A9AC; }
+  footer p {
+    font-size: 1.2rem;
+    color: #A7A9AC;
+    margin: 0 0 5px; }
+    footer p a {
+      color: #A7A9AC;
+      font-weight: bold;
+      text-decoration: underline; }
+      footer p a:hover, footer p a:focus, footer p a:active {
+        color: #8d8f93; }
+
+.carousel .carousel-inner {
+  height: 700px;
+  overflow: hidden; }
+  .carousel .carousel-inner .item > img {
+    width: 50%; }
+
 /*# sourceMappingURL=main.css.map */

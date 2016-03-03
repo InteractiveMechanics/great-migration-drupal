@@ -1,0 +1,171 @@
+nav.navbar {
+    background: white;
+    border: none;
+    height: 100px;
+    transition: 0.5s all;
+
+    @media screen and #{$screen-gtxs} {
+        &.scrolled {
+            height: 80px;
+    
+            .navbar-brand {
+                font-size: 2.0rem;
+                padding: 20px 15px;
+    
+                span { 
+                    font-size: 1.3rem;
+                    margin-top: 3px;
+                }
+            }
+            .navbar-nav {
+                > li {
+                    a {
+                        padding: 30px 0 6px;
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar-brand {
+        padding: 25px 15px;
+        height: 100px;
+        font-family: $sans-serif;
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        color: $black;
+        transition: 0.5s all;
+        
+        span {
+            font-family: $serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            text-transform: none;
+            display: block;
+            margin-top: 8px;
+            color: $accentgreen;
+            transition: 0.5s all;
+        }
+    }
+    .navbar-nav {
+        > li {
+            &.open {
+                > a {
+                    background: none;
+                    border-bottom: 1px solid $lightgray !important;
+                }
+                > ul {
+                    padding: 0;
+
+                    @media screen and #{$screen-gtxs} {
+                        right: -80px;
+                        top: 120%;
+                        border-radius: 0;
+                        border: none;
+                        width: 260px;
+                    }
+
+                    > li {
+                        &.active {
+                            > a {
+                                background: $accentgreen;
+                            }
+                        }
+
+                        > a {
+                            padding: 10px 20px;
+                            border-bottom: 1px solid $lightgray;
+                            text-align: center;
+
+                            @media screen and #{$screen-xs} {
+                                padding-top: 15px;
+                                padding-bottom: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.active {                
+                > a {
+                    background: none;
+                    color: $black;
+
+                    @media screen and #{$screen-gtxs} {
+                        border-bottom: 3px solid $accentgreen;
+                    }
+                }
+            }
+
+            > a {
+                padding: 40px 0 6px;
+                margin: 0 15px;
+                font-size: 1.5rem;
+                transition: 0.5s all;
+
+                @media screen and #{$screen-gtxs} {
+                    position: relative;
+                    top: 0;
+                }
+
+                &:hover, &:focus, &:active {
+                    background: none !important;
+                    
+                    @media screen and #{$screen-gtxs} {
+                        top: -5px;
+                    }
+                }
+
+                @media screen and #{$screen-xs} {
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    border-bottom: 1px solid $lightgray;
+                    margin: 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    @media screen and #{$screen-xs} {
+        .navbar-toggle {
+            border: none;
+            margin-top: 28px;
+            margin-right: 10px;
+    
+            &:focus, &:active, &:hover {
+                background: none;
+    
+                .icon-bar {
+                    background-color: $accentgreen;
+                }
+            }
+    
+            .icon-bar {
+                width: 32px;
+                transition: 0.5s all;
+                
+                + .icon-bar {
+                    margin-top: 6px;
+                }
+            }
+        }
+        .navbar-collapse {
+            padding: 0px;
+            top: -5px;
+            position: relative;
+            background: white;
+            margin: 0 -30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0);
+            transition: 0.5s all;
+    
+            &.in {
+                box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+            }
+    
+            > ul {
+                margin: 0;
+            }
+        }
+    }
+}
