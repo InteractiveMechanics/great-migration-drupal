@@ -24,3 +24,21 @@
     -o-animation: fadeIn 1s 1 forwards;
     animation: fadeIn 1s 1 forwards; 
 }
+
+.arrow {
+    font-family: sans-serif;
+    margin-left: 5px;
+}
+.border {
+    position: relative;
+
+    &:after {
+        content: '';
+        border: 1px solid rgba(255,255,255,0.65);
+        position: absolute;
+        top: 15px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+    }
+}

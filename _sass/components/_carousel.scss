@@ -49,6 +49,10 @@
                     padding: 50px;
                     text-align: center;
 
+                    @media screen and #{$screen-gtmd} {
+                        padding: 50px 60px;
+                    }
+
                     h1 {
                         color: white;
                         font-size: 6.0rem;
