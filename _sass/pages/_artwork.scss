@@ -1,0 +1,60 @@
+#artwork-scrollspy {
+    position: fixed !important;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(0,0,0,0.65);
+    padding: 30px;
+    width: 220px;
+    z-index: 9999;
+
+    @media screen and #{$screen-ltmd} {
+        display: none;
+    }
+
+    .nav {
+        list-style: disc;
+
+        li {
+            a {
+                color: white;
+                opacity: 0.65;
+                padding: 8px 5px;
+
+                &:hover, &:focus, &:active {
+                    background: none;
+                    opacity: 1;
+                }
+            }
+
+            &.active {
+                a {
+                    background: none;
+                    color: white;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.content-container {
+    height: auto;
+    padding: 50px 0;
+
+    .content {
+        padding: 0 30px;
+        width: 50%;
+        display: inline-block;
+
+        &.content-left {
+            padding-left: 60px;
+        }
+        &.content-right {
+            padding-right: 60px;
+        }
+    }
+    .images {
+        width: 45%;
+        display: inline-block;
+    }
+}

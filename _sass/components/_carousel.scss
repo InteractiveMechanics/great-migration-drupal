@@ -97,10 +97,19 @@
 
             .btn {
                 width: 85%;
+                max-width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                
 
                 span.glyphicon {
                     margin-right: 8px;
                     font-size: 90%;
+                }
+
+                @media screen and #{$screen-xs} {
+                    width: 100%;
+                    max-width: 100%;
                 }
             }
         }
