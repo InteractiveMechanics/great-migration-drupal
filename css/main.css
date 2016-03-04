@@ -49,7 +49,10 @@ p {
 
 a {
   text-decoration: none;
-  transition: 0.5s all; }
+  transition: 0.5s all;
+  color: #8DAC62; }
+  a:hover, a:focus, a:active {
+    color: #738f4c; }
 
 h1 {
   font-family: "Oswald", sans-serif;
@@ -68,6 +71,16 @@ h2 {
     h2 {
       font-size: 3.0rem; } }
 
+h3 {
+  color: #8DAC62; }
+
+.divider {
+  margin: 0 12px; }
+  .divider:after {
+    content: '/';
+    color: #A7A9AC;
+    font-weight: bold; }
+
 main {
   margin-top: 100px; }
 
@@ -81,18 +94,25 @@ main {
 .page .caption {
   display: table;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  max-width: 65%; }
+  @media screen and (max-width: 991px) {
+    .page .caption {
+      max-width: 50%; } }
+  @media screen and (max-width: 767px) {
+    .page .caption {
+      max-width: 100%; } }
   .page .caption > img {
     padding: 0;
     border: none;
     display: block;
+    width: 100%;
     max-width: 100%;
     margin: 0; }
   .page .caption > figcaption {
     border: none;
     padding: 15px 10px;
     background: #f1f2f2;
-    font-size: small;
     font-style: italic;
     text-align: center;
     display: table-caption;
@@ -102,10 +122,16 @@ main {
 .align-right {
   float: right;
   margin-left: 30px; }
+  @media screen and (max-width: 767px) {
+    .align-right {
+      margin-left: 0; } }
 
 .align-left {
   float: left;
   margin-right: 30px; }
+  @media screen and (max-width: 767px) {
+    .align-left {
+      margin-right: 0; } }
 
 nav.navbar {
   background: white;
@@ -114,7 +140,8 @@ nav.navbar {
   transition: 0.5s all; }
   @media screen and (min-width: 768px) {
     nav.navbar.scrolled {
-      height: 80px; }
+      height: 80px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
       nav.navbar.scrolled .navbar-brand {
         font-size: 2.0rem;
         padding: 20px 15px; }
@@ -143,7 +170,7 @@ nav.navbar {
       transition: 0.5s all; }
   nav.navbar .navbar-nav > li.open > a {
     background: none;
-    border-bottom: 1px solid #f1f2f2 !important; }
+    border-bottom: none; }
   nav.navbar .navbar-nav > li.open > ul {
     padding: 0; }
     @media screen and (min-width: 768px) {
@@ -233,7 +260,8 @@ footer {
   footer p {
     font-size: 1.2rem;
     color: #A7A9AC;
-    margin: 0 0 5px; }
+    margin: 0 0 5px;
+    line-height: 1.2; }
     footer p a {
       color: #A7A9AC;
       font-weight: bold;
@@ -491,7 +519,8 @@ footer {
         font-family: "Oswald", sans-serif;
         text-transform: uppercase;
         margin: 0;
-        font-size: 2.7rem; }
+        font-size: 2.7rem;
+        color: white; }
       .flex-container .artwork-container .artwork-content h4 {
         margin: 0 0 8px; }
     .flex-container .artwork-container .overlay {
@@ -519,5 +548,45 @@ footer {
       color: #DAF1F9; }
     .flex-container .artwork-container.events:hover .overlay, .flex-container .artwork-container.events:focus .overlay, .flex-container .artwork-container.events:active .overlay {
       background: rgba(37, 94, 118, 0.75); }
+
+.events {
+  margin: 30px 0 0; }
+  .events .event {
+    background: #f1f2f2;
+    margin-bottom: 30px;
+    padding: 25px 10px; }
+    @media screen and (max-width: 767px) {
+      .events .event {
+        margin: 0 0 30px; } }
+  .events .date-stamp {
+    background: white;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+    .events .date-stamp .date-stamp-day {
+      font-size: 5.4rem;
+      font-weight: 700;
+      font-family: "Oswald", sans-serif;
+      padding: 20px 0; }
+      @media screen and (max-width: 767px) {
+        .events .date-stamp .date-stamp-day {
+          font-size: 4.8rem; } }
+    .events .date-stamp .date-stamp-month {
+      padding: 10px;
+      background: #8DAC62;
+      color: white;
+      font-weight: bold; }
+  .events h1 {
+    margin: 0 0 15px;
+    font-size: 3.6rem; }
+    @media screen and (max-width: 767px) {
+      .events h1 {
+        font-size: 3rem; } }
+  .events h5 {
+    margin-bottom: 10px; }
+  .events a {
+    font-size: 1.6rem; }
+    @media screen and (max-width: 767px) {
+      .events a {
+        display: block; } }
 
 /*# sourceMappingURL=main.css.map */

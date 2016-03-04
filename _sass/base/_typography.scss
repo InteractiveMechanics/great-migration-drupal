@@ -10,6 +10,11 @@ p {
 a {
     text-decoration: none;
     transition: 0.5s all;
+    color: $accentgreen;
+
+    &:hover, &:focus, &:active {
+        color: darken($accentgreen, 10%);
+    }
 }
 
 h1 {
@@ -31,4 +36,16 @@ h2 {
         font-size: 3.0rem;
     }
 }
+h3 {
+    color: $accentgreen;
+}
 
+.divider {
+    margin: 0 12px;
+
+    &:after {
+        content: '/';
+        color: $midgray;
+        font-weight: bold;
+    }
+}

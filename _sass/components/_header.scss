@@ -7,6 +7,7 @@ nav.navbar {
     @media screen and #{$screen-gtxs} {
         &.scrolled {
             height: 80px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
     
             .navbar-brand {
                 font-size: 2.0rem;
@@ -53,7 +54,7 @@ nav.navbar {
             &.open {
                 > a {
                     background: none;
-                    border-bottom: 1px solid $lightgray !important;
+                    border-bottom: none;
                 }
                 > ul {
                     padding: 0;
