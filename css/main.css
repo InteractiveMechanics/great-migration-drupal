@@ -273,7 +273,8 @@ footer {
 .carousel-inner {
   height: 750px;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  margin-bottom: 50px; }
   @media screen and (max-width: 767px) {
     .artwork-hero-inner,
     .carousel-inner {
@@ -464,10 +465,30 @@ footer {
         padding: 12px 26px;
         border-width: 3px; } }
 
+.pager li a {
+  border: 3px solid #8DAC62;
+  color: #8DAC62;
+  font-size: 1.6rem;
+  padding: 12px 24px;
+  background: none;
+  border-radius: 99px;
+  margin: 0 8px; }
+  .pager li a:hover, .pager li a:focus, .pager li a:active {
+    background: #8DAC62;
+    color: white; }
+.pager li.disabled a {
+  opacity: 0.5;
+  background: none;
+  color: #8DAC62; }
+  .pager li.disabled a:hover, .pager li.disabled a:focus, .pager li.disabled a:active {
+    color: #8DAC62;
+    background: none;
+    opacity: 0.35; }
+
 .artwork-array {
   background: #E9E1D7;
   padding: 60px 0;
-  margin-top: 100px; }
+  margin-top: 50px; }
 
 .flex-container {
   -moz-column-count: 3;
@@ -520,7 +541,8 @@ footer {
         text-transform: uppercase;
         margin: 0;
         font-size: 2.7rem;
-        color: white; }
+        color: white;
+        line-height: 1.4; }
       .flex-container .artwork-container .artwork-content h4 {
         margin: 0 0 8px; }
     .flex-container .artwork-container .overlay {

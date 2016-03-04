@@ -3,6 +3,7 @@
     height: 750px;
     overflow: hidden;
     position: relative;
+    margin-bottom: 50px;
 
     @media screen and #{$screen-xs} {
         height: 600px;
