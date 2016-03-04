@@ -589,4 +589,44 @@ footer {
       .events a {
         display: block; } }
 
+.resources .resource {
+  display: block;
+  max-height: 325px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px; }
+  .resources .resource img {
+    position: relative;
+    top: 0;
+    left: 0; }
+  .resources .resource .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    transition: 0.5s all; }
+  .resources .resource .resource-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2; }
+    .resources .resource .resource-details h1 {
+      color: white;
+      margin: 0 0 0; }
+    .resources .resource .resource-details h3 {
+      color: white;
+      margin: 0 0 10px; }
+  .resources .resource:hover .overlay, .resources .resource:focus .overlay, .resources .resource:active .overlay {
+    background: rgba(100, 121, 70, 0.75); }
+
 /*# sourceMappingURL=main.css.map */
