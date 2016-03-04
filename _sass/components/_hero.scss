@@ -1,0 +1,62 @@
+.hero {
+    height: 750px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+
+    @media screen and #{$screen-xs} {
+        height: 600px;
+    }
+
+    img {
+        max-width: 100%;
+        width: 100%;
+        min-height: 750px;
+
+        @media screen and #{$screen-xs} {
+            min-height: 600px;
+        }
+    }
+    
+    .hero-details {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        z-index: 2;
+        text-align: center;
+
+        @media screen and #{$screen-xs} {
+            right: 15px;
+            left: 15px;
+        }
+
+        h1 {
+            color: white;
+        }
+        h3 {
+            color: white;   
+        }
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 30px;
+        left: 30px;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+        transition: 0.5s all;
+
+        @media screen and #{$screen-xs} {
+            right: 15px;
+            left: 15px;
+        }
+    }
+}

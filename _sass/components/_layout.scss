@@ -4,6 +4,11 @@ main {
 .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
+
+    @media screen and #{$screen-xs} {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 .page {
     img {

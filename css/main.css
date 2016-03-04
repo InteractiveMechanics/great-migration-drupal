@@ -87,6 +87,10 @@ main {
 .container-fluid {
   padding-right: 30px;
   padding-left: 30px; }
+  @media screen and (max-width: 767px) {
+    .container-fluid {
+      padding-left: 15px;
+      padding-right: 15px; } }
 
 .page img {
   max-width: 100%;
@@ -484,6 +488,56 @@ footer {
     color: #8DAC62;
     background: none;
     opacity: 0.35; }
+
+.hero {
+  height: 750px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 50px; }
+  @media screen and (max-width: 767px) {
+    .hero {
+      height: 600px; } }
+  .hero img {
+    max-width: 100%;
+    width: 100%;
+    min-height: 750px; }
+    @media screen and (max-width: 767px) {
+      .hero img {
+        min-height: 600px; } }
+  .hero .hero-details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    z-index: 2;
+    text-align: center; }
+    @media screen and (max-width: 767px) {
+      .hero .hero-details {
+        right: 15px;
+        left: 15px; } }
+    .hero .hero-details h1 {
+      color: white; }
+    .hero .hero-details h3 {
+      color: white; }
+  .hero .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 30px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    transition: 0.5s all; }
+    @media screen and (max-width: 767px) {
+      .hero .overlay {
+        right: 15px;
+        left: 15px; } }
 
 .artwork-array {
   background: #E9E1D7;
