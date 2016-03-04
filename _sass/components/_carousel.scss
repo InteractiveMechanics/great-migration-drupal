@@ -24,6 +24,20 @@
             width: auto;
         }
     }
+    .artwork-hero-image {
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: 1s all;
+
+            &.in {
+                opacity: 1;
+            }
+        }
+    }
+
     .carousel-details-container,
     .artwork-hero-details-container {
         width: 50%;
@@ -91,7 +105,7 @@
             }
         }
         .artwork-hero-details {
-            padding-top: 75px;
+            padding-top: 100px;
         }
     }
 }

@@ -307,6 +307,16 @@ footer {
     .carousel-inner .artwork-hero-image img {
       height: 100%;
       width: auto; }
+  .artwork-hero-inner .artwork-hero-image img,
+  .carousel-inner .artwork-hero-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 1s all; }
+    .artwork-hero-inner .artwork-hero-image img.in,
+    .carousel-inner .artwork-hero-image img.in {
+      opacity: 1; }
   .artwork-hero-inner .carousel-details-container,
   .artwork-hero-inner .artwork-hero-details-container,
   .carousel-inner .carousel-details-container,
@@ -434,7 +444,7 @@ footer {
     .artwork-hero-inner .artwork-hero-details-container .artwork-hero-details,
     .carousel-inner .carousel-details-container .artwork-hero-details,
     .carousel-inner .artwork-hero-details-container .artwork-hero-details {
-      padding-top: 75px; }
+      padding-top: 100px; }
 
 .carousel-indicators {
   bottom: -50px; }

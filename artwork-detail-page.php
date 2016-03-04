@@ -4,9 +4,9 @@
     <section class="container-fluid">
         <div class="artwork-hero-inner">                
             <div class="artwork-hero-image border">
-                <img src="http://placehold.it/720x600" alt="#">
-                <img src="http://placehold.it/720x600" alt="#">
-                <img src="http://placehold.it/720x600" alt="#">
+                <img src="http://placehold.it/720x600" alt="#" class="in">
+                <img src="http://placehold.it/710x610" alt="#">
+                <img src="http://placehold.it/700x590" alt="#">
                 <img src="http://placehold.it/720x600" alt="#">
                 <img src="http://placehold.it/720x600" alt="#">
             </div>

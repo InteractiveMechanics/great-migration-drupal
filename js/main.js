@@ -9,4 +9,20 @@ $(function(){
         }
     });
 
+    // Rotate through images on the artwork page automagically
+    var images = $('.artwork-hero-image').find('img');
+    if (images.length > 1) {
+        var total = images.length;
+        var count = 0;
+
+        function changeImage() {
+            images.removeClass('in');
+            $('.artwork-hero-image img:eq(' + count + ')').addClass('in');
+
+            count++;
+            if (count > total - 1){ count = 0; }
+        }
+        setInterval(changeImage, 5000);
+    }
+
 });
