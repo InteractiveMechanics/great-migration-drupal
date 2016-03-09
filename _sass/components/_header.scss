@@ -68,10 +68,9 @@ nav.navbar {
                     }
 
                     > li {
-                        &.active {
-                            > a {
-                                background: $accentgreen;
-                            }
+                        > a.is-active {
+                            background: $accentgreen;
+                            color: white;
                         }
 
                         > a {
@@ -87,7 +86,7 @@ nav.navbar {
                     }
                 }
             }
-            &.active {                
+            &.active {
                 > a {
                     background: none;
                     color: $black;
@@ -109,6 +108,14 @@ nav.navbar {
                     top: 0;
                 }
 
+                &.is-active {
+                    background: none;
+                    color: $black;
+
+                    @media screen and #{$screen-gtxs} {
+                        border-bottom: 3px solid $accentgreen;
+                    }
+                }
                 &:hover, &:focus, &:active {
                     background: none !important;
                     

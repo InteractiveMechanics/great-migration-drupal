@@ -1,4 +1,4 @@
-$(function(){
+(function ($) {
 
     // If you're scrolling and not at the top of the page...
     $(window).scroll(function() {
@@ -25,4 +25,4 @@ $(function(){
         setInterval(changeImage, 5000);
     }
 
-});
+})(jQuery);
