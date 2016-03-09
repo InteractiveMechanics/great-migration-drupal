@@ -1,0 +1,12 @@
+name: Great Migration
+type: theme
+description: 'The base theme for Great Migration, built on the Stark theme.'
+package: Core
+version: 1.x
+core: 8.x
+
+libraries:
+  - greatmigration/light-gallery
+  - greatmigration/bootstrap
+  - greatmigration/mapbox
+  - greatmigration/global-styling

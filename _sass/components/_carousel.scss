@@ -1,0 +1,135 @@
+.artwork-hero-inner,
+.carousel-inner {
+    height: 750px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+
+    @media screen and #{$screen-xs} {
+        height: 600px;
+    }
+
+    .carousel-image,
+    .artwork-hero-image {
+        width: 50%;
+        height: 750px;
+
+        @media screen and #{$screen-xs} {
+            height: 600px;
+            width: 100%;
+        }
+
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+    .artwork-hero-image {
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: 1s all;
+
+            &.in {
+                opacity: 1;
+            }
+        }
+    }
+
+    .carousel-details-container,
+    .artwork-hero-details-container {
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        background: $accentgreen;
+        bottom: 0;
+
+        @media screen and #{$screen-xs} {
+            width: 100%;
+            left: 0;
+            background: rgba($accentgreen, 0.85);
+        }
+
+        img {
+            width: 100%;
+            
+            @media screen and #{$screen-xs} {
+                margin: 50px auto 0;
+                display: block;
+                width: 90%;
+            }
+        }
+        .carousel-details,
+        .artwork-hero-details {
+            padding: 50px;
+            text-align: center;
+
+            @media screen and #{$screen-gtmd} {
+                padding: 50px 60px;
+            }
+
+            h1 {
+                color: white;
+                font-size: 6.0rem;
+                margin: 0 0 25px;
+                
+                @media screen and #{$screen-xs} {
+                    font-size: 4.8rem;
+                }
+            }
+            h3 {
+                color: white;
+                margin: 0 0 10px;
+            }
+            p {
+                font-size: 2.1rem;
+                color: white;
+                margin: 0 0 25px;
+                line-height: 1.6;
+
+                @media screen and #{$screen-xs} {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .btn {
+                width: 85%;
+                max-width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                
+
+                span.glyphicon {
+                    margin-right: 8px;
+                    font-size: 90%;
+                }
+
+                @media screen and #{$screen-xs} {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+        .artwork-hero-details {
+            padding-top: 100px;
+        }
+    }
+}
+.carousel-indicators {
+    bottom: -50px;
+
+    li {
+        background: lighten($midgray, 10%);
+        border: none;
+        width: 14px !important;
+        height: 14px !important;
+        margin: 0 2px !important;
+
+        &.active {
+            background: $accentgreen;
+        }
+    }
+}

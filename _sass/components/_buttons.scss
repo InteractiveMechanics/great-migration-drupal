@@ -1,0 +1,38 @@
+.btn {
+    border-radius: 0;
+    background: none;
+    border-width: 3px;
+    margin-bottom: 15px;
+
+    &.btn-default {
+        border-color: $accentgreen;
+        color: $accentgreen;
+
+        &:hover, &:focus, &:active {
+            background: $accentgreen;
+            color: white;
+        }
+    }
+
+    &.btn-inverted {
+        border-color: white;
+        color: white;
+
+        &:hover, &:focus, &:active {
+            background: white;
+            color: $accentgreen;
+        }
+    }
+
+    &.btn-lg {
+        font-size: 2.1rem;
+        padding: 14px 30px;
+        border-width: 4px;
+
+        @media screen and #{$screen-xs} {
+            font-size: 1.8rem;
+            padding: 12px 26px;
+            border-width: 3px;
+        }
+    }
+}

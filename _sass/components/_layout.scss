@@ -1,0 +1,74 @@
+main {
+    margin-top: 100px;
+}
+.container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+
+    @media screen and #{$screen-xs} {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+.page {
+    p:first-of-type:first-letter {
+        float: left; 
+        font-size: 6.8rem;
+        line-height: 1.1;
+        padding-right: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+    .caption {
+        display: table;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        margin-bottom: 15px;
+        max-width: 65%;
+
+        @media screen and #{$screen-ltmd} {
+            max-width: 50%;
+        }
+        @media screen and #{$screen-xs} {
+            max-width: 100%;
+        }
+
+        > img {
+            padding: 0;
+            border: none;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+        > figcaption {
+            border: none;
+            padding: 15px 10px;
+            background: $lightgray;
+            font-style: italic;
+            text-align: center;
+            display: table-caption;
+            caption-side: bottom;
+            max-width: none;
+        }
+    }
+}
+
+.align-right {
+    float: right;
+    margin-left: 30px;
+
+    @media screen and #{$screen-xs} {
+        margin-left: 0;
+    }
+}
+.align-left {
+    float: left;
+    margin-right: 30px;
+
+    @media screen and #{$screen-xs} {
+        margin-right: 0;
+    }
+}
