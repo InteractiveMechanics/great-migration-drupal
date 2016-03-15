@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% for row in rows %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+            {% if title %}
+                <h2>{{ title }}</h2>
+                <p>Nullam sed tempor neque, non feugiat orci. Morbi placerat mollis elit, sit amet consectetur lorem condimentum lobortis. Etiam pulvinar nibh justo, nec sagittis lacus ultricies ut. Donec volutpat lacinia arcu eget lacinia.</p>
+            {% endif %}
+            <div class="events">
+                {{ row.content }}
+            </div>
+        </div>
+    </div>
+{% endfor %}

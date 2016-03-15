@@ -4,6 +4,7 @@ description: 'The base theme for Great Migration, built on the Stark theme.'
 package: Core
 version: 1.x
 core: 8.x
+base theme: stable
 
 libraries:
   - greatmigration/light-gallery
