@@ -93,41 +93,44 @@ main {
       padding-left: 15px;
       padding-right: 15px; } }
 
-.page p:first-of-type:first-letter {
-  float: left;
-  font-size: 6.8rem;
-  line-height: 1.1;
-  padding-right: 10px; }
-.page img {
-  max-width: 100%;
-  margin-bottom: 25px; }
-.page .caption {
-  display: table;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  margin-bottom: 15px;
-  max-width: 65%; }
-  @media screen and (max-width: 991px) {
-    .page .caption {
-      max-width: 50%; } }
-  @media screen and (max-width: 767px) {
-    .page .caption {
-      max-width: 100%; } }
-  .page .caption > img {
-    padding: 0;
-    border: none;
-    display: block;
-    width: 100%;
+.page {
+  margin-bottom: 50px; }
+  .page p:first-child:first-letter {
+    float: left;
+    font-size: 6.8rem;
+    line-height: 1.1;
+    padding-right: 10px; }
+  .page img {
     max-width: 100%;
-    margin: 0; }
-  .page .caption > figcaption {
-    border: none;
-    padding: 15px 10px;
-    background: #f1f2f2;
-    font-style: italic;
-    text-align: center;
-    display: table-caption;
-    caption-side: bottom;
-    max-width: none; }
+    height: auto;
+    margin-bottom: 25px; }
+  .page .caption {
+    display: table;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+    max-width: 65%; }
+    @media screen and (max-width: 991px) {
+      .page .caption {
+        max-width: 50%; } }
+    @media screen and (max-width: 767px) {
+      .page .caption {
+        max-width: 100%; } }
+    .page .caption > img {
+      padding: 0;
+      border: none;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 0; }
+    .page .caption > figcaption {
+      border: none;
+      padding: 15px 10px;
+      background: #f1f2f2;
+      font-style: italic;
+      text-align: center;
+      display: table-caption;
+      caption-side: bottom;
+      max-width: none; }
 
 .align-right {
   float: right;
@@ -507,6 +510,30 @@ footer {
         padding: 12px 26px;
         border-width: 3px; } }
 
+.more-link {
+  text-align: center;
+  display: block;
+  padding: 25px 0; }
+  .more-link > a {
+    border-radius: 0;
+    background: none;
+    margin-bottom: 15px;
+    border: 3px solid #8DAC62;
+    color: #8DAC62;
+    font-size: 2.1rem;
+    padding: 14px 30px;
+    border-width: 4px;
+    display: inline-block; }
+    @media screen and (max-width: 767px) {
+      .more-link > a {
+        font-size: 1.8rem;
+        padding: 12px 26px;
+        border-width: 3px; } }
+    .more-link > a:hover, .more-link > a:focus, .more-link > a:active {
+      background: #8DAC62;
+      color: white;
+      text-decoration: none; }
+
 .pager li a {
   border: 3px solid #8DAC62;
   color: #8DAC62;
@@ -543,7 +570,8 @@ input.input-lg {
   .hero img {
     max-width: 100%;
     width: 100%;
-    min-height: 750px; }
+    min-height: 750px;
+    height: auto; }
     @media screen and (max-width: 767px) {
       .hero img {
         min-height: 600px; } }
@@ -759,44 +787,54 @@ input.input-lg {
       .events a {
         display: block; } }
 
-.resources .resource {
-  display: block;
-  max-height: 325px;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 30px; }
-  .resources .resource img {
+.resources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; }
+  .resources .resource-container {
+    width: 23%;
+    text-align: center;
+    color: white;
+    display: block;
+    cursor: pointer;
     position: relative;
-    top: 0;
-    left: 0; }
-  .resources .resource .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+    margin: 15px 1%;
     transition: 0.5s all; }
-  .resources .resource .resource-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2; }
-    .resources .resource .resource-details h1 {
-      color: white;
-      margin: 0 0 0; }
-    .resources .resource .resource-details h3 {
-      color: white;
-      margin: 0 0 10px; }
-  .resources .resource:hover .overlay, .resources .resource:focus .overlay, .resources .resource:active .overlay {
-    background: rgba(100, 121, 70, 0.75); }
+    @media screen and (max-width: 991px) {
+      .resources .resource-container {
+        width: 31%; } }
+    @media screen and (max-width: 767px) {
+      .resources .resource-container {
+        width: 46%;
+        margin: 15px 2%; } }
+    .resources .resource-container:hover, .resources .resource-container:focus, .resources .resource-container:active {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); }
+    .resources .resource-container .resource-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden; }
+      .resources .resource-container .resource-image img {
+        position: relative;
+        width: auto;
+        max-width: 125%;
+        min-height: 100%; }
+    .resources .resource-container .resource-content {
+      padding: 30px;
+      background: white;
+      height: 225px; }
+      .resources .resource-container .resource-content h2 {
+        font-family: "Oswald", sans-serif;
+        text-transform: uppercase;
+        margin: 0;
+        font-size: 2.4rem;
+        color: #231f20;
+        line-height: 1.3; }
+        @media screen and (max-width: 991px) {
+          .resources .resource-container .resource-content h2 {
+            font-size: 2.1rem; } }
+      .resources .resource-container .resource-content h6 {
+        font-style: italic;
+        color: #A7A9AC; }
 
 /*# sourceMappingURL=main.css.map */

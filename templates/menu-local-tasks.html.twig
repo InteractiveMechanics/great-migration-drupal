@@ -13,11 +13,17 @@
  * @ingroup themeable
  */
 #}
-{% if primary %}
-  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
-  <ul class="nav nav-pills">{{ primary }}</ul>
-{% endif %}
-{% if secondary %}
-  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
-  <ul class="nav nav-pills">{{ secondary }}</ul>
-{% endif %}
+<section class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+        {% if primary %}
+          <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+          <ul class="nav nav-pills">{{ primary }}</ul>
+        {% endif %}
+        {% if secondary %}
+          <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+          <ul class="nav nav-pills">{{ secondary }}</ul>
+        {% endif %}
+        </div>
+    </div>
+</div>

@@ -65,11 +65,11 @@
  * @ingroup themeable
  */
 #}
-
-<section class="page container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">            
-            {{ content }}
-        </div>
+<a class="artwork-container history-context" href="{{ url }}">
+    <div class="artwork-content">
+        <h4>History & Context</h4>
+        <h3>{{ node.title[0].value }}</h3>
     </div>
-</div>
+    <div class="overlay border"></div>
+    {{ content.field_thumbnail_image[0] }}
+</a>

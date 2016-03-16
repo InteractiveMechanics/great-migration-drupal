@@ -12,6 +12,7 @@
         max-width: 100%;
         width: 100%;
         min-height: 750px;
+        height: auto;
 
         @media screen and #{$screen-xs} {
             min-height: 600px;

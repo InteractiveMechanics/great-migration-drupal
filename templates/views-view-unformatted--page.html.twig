@@ -17,8 +17,6 @@
  * @ingroup themeable
  */
 #}
-<div class="events">
-    {% for row in rows %}
-        {{ row.content }}
-    {% endfor %}
-</div>
+{% for row in rows %}
+    {{ row.content }}
+{% endfor %}

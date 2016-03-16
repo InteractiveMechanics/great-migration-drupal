@@ -65,11 +65,35 @@
  * @ingroup themeable
  */
 #}
-
+<section class="container-fluid hero">
+    {{ content.field_poster_images[0] }}
+    <div class="hero-details border">
+        <h3>History & Context</h3>
+        <h1>{{ node.title.value }}</h1>
+    </div>
+    <div class="overlay"></div>
+</section>
 <section class="page container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">            
-            {{ content }}
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+            {{ content.body }}
+            <hr />
+            <p><em>{{ node.field_citation[0].value }}</em></p>
         </div>
     </div>
-</div>
+</div>    
+<section class="artwork-array">
+    <div class="container">
+        <div class="resources">
+            {% for key, content in content.field_resources if key|first != '#' %}
+                {% set image = content['#node'].field_image.entity.uri.value %}
+                {% set alt = content['#node'].field_image.alt %}
+                {% set uri = content['#node'].field_link.uri %}
+                {% set title = content['#node'].title.value %}
+
+                {% include directory ~ '/inc/resource.html.twig' %}
+
+            {% endfor %}
+        </div>
+    </div>
+</section>

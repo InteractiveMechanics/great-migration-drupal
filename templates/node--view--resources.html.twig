@@ -65,11 +65,10 @@
  * @ingroup themeable
  */
 #}
+{% set image = content.field_image.0['#item'].entity.uri.value %}
+{% set alt = content.field_image.0['#item'].alt %}
+{% set uri = content.field_link.0['#url'].uri %}
+{% set title = node.title[0].value %}
 
-<section class="page container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">            
-            {{ content }}
-        </div>
-    </div>
-</div>
+{% include directory ~ '/inc/resource.html.twig' %}
+
