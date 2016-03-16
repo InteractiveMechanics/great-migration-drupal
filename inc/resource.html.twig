@@ -1,9 +1,9 @@
- <a class="resource-container" href="{{ uri }}" target="_blank">
+ <a class="resource-container" {% if uri %} href="{{ uri }}" {% endif %} target="_blank">
     <div class="resource-image border">
         <img src="{{ file_url(image) }}" alt="{{ alt }}" />
     </div>
     <div class="resource-content">
         <h2>{{ title }}</h2>
-        <h6>{{ uri }}</h6>
+        {% if uri %}<h6>{{ uri }}</h6>{% endif %}
     </div>                    
 </a>

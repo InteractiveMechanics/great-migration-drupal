@@ -65,50 +65,57 @@
  * @ingroup themeable
  */
 #}
-
 <section class="container-fluid">
     <div class="artwork-hero-inner">                
         <div class="artwork-hero-image border">
-            <img src="http://placehold.it/720x600" alt="#" class="in">
-            <img src="http://placehold.it/710x610" alt="#">
-            <img src="http://placehold.it/700x590" alt="#">
-            <img src="http://placehold.it/720x600" alt="#">
-            <img src="http://placehold.it/720x600" alt="#">
+            {% for key, content in content.field_poster_images if key|first != '#' %}
+                {% set image = content['#item'].entity.uri.value %}
+                {% set alt = content['#item'].alt %}
+
+                {% if loop.first %}
+                    <img src="{{ file_url(image) }}" alt="{{ alt }}" class="in" />
+                {% else %}
+                    <img src="{{ file_url(image) }}" alt="{{ alt }}" />
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="artwork-hero-details-container">
             <div class="artwork-hero-details">
-                <h3>Artist Installation</h3>
-                <h1>Salisbury</h1>
-                <p>A short experimental film about the choice of migration and the choice of remaining. It is shot in Salisbury, North Carolina by Kevin Jerome Everson.</p>
+                <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
+                <h1>{{ node.title.value }}</h1>
+                <p>{{ content.body }}</p>
                 <a href="#" class="btn btn-default btn-lg btn-inverted"><span class="glyphicon glyphicon-picture"></span> View the Gallery</a><br/>
                 <a href="#" class="btn btn-default btn-lg btn-inverted"><span class="glyphicon glyphicon-facetime-video"></span> Watch the Artist Statement</a>
             </div>
         </div>
     </div>
 </section>
-<section id="02" class="page">
-    {% if content.field_show_section_01.value is 1 %}
+{% if content.field_show_section_01 %}
+    <section id="02" class="page">
         <div class="content-container">
             <div class="content content-left">
                 <h3>About the location</h3>
-                <p>Morbi dapibus sed magna in auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam et lorem id magna sollicitudin condimentum eu vitae quam. Fusce pellentesque, ipsum in ultrices commodo, turpis leo faucibus lorem, non efficitur leo lacus maximus lacus. Mauris rhoncus felis sit amet sem aliquet sagittis. Donec odio est, interdum id placerat eu, lacinia vestibulum mi. Etiam id libero in massa tincidunt pellentesque. Quisque non aliquet enim. Mauris vehicula, risus nec sollicitudin commodo, tortor augue facilisis arcu, sed maximus orci risus quis felis. Integer euismod lacus quis massa efficitur, a bibendum magna sollicitudin. In hendrerit, tellus eget mollis tristique, ipsum diam sagittis nulla, in aliquam tellus justo sit amet nibh.</p>
+                <p>{{ content.field_about_the_location_body }}</p>
             </div>
             <div class="images images-right">
-                
+                {{ content.field_about_the_location_image }}
             </div>
         </div>
-    {% endif %}
-    <div id="map" class="full-map"></div>
-    <script>
-        // Let's make a pretty map!
-        // Tossing this here, since we need to manipulate it on the fly
-        // based on what gets returned by the page
-        L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
-        var map = L.mapbox.map('map', 'mapbox.streets');
-        map.setView([40, -74.50], 10);
-        map.scrollWheelZoom.disable();
-    </script>
-</section>
+        {% if content.field_show_section_02 %}
+            <div id="map" class="full-map"></div>
+            <script>
+                // Let's make a pretty map!
+                // Tossing this here, since we need to manipulate it on the fly
+                // based on what gets returned by the page
+                L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
+                var map = L.mapbox.map('map', 'mapbox.streets');
+                map.setView([40, -74.50], 10);
+                map.scrollWheelZoom.disable();
+            </script>
+        {% endif %}
+    </section>
+{% endif %}
+{% if content.field_show_section_03 %}
 <section id="03" class="page">
     <div class="content-container">
         <div class="images images-left">
@@ -120,39 +127,47 @@
         </div>
     </div>
 </section>
+{% endif %}
 <section id="04">
     <div class="media-container">
         <div class="container">
             <h2 class="text-center">Other media and resources</h2>
-            <div class="row">
-                <div class="col-sm-4 col-md-3">
-                    <div class="media">
-                        <div class="media-image">
-                            <img src="http://placehold.it/300x200" alt="#">
-                        </div>
-                        <div class="media-content">
-                            <h5>Oral History</h5>
-                            <h3>Hughsey Child</h3>
-                            <h6>goinnorth.org</h6>
-                        </div>
-                    </div>
-                </div>
+            <div class="resources">
+                {% for key, content in content.field_resources if key|first != '#' %}
+                    {% set image = content['#node'].field_image.entity.uri.value %}
+                    {% set alt = content['#node'].field_image.alt %}
+                    {% set uri = content['#node'].field_link.uri %}
+                    {% set title = content['#node'].title.value %}
+    
+                    {% include directory ~ '/inc/resource.html.twig' %}
+    
+                {% endfor %}
+                {% for key, content in content.field_media_other if key|first != '#' %}
+                    {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
+                    {% set alt = content['#node'].field_thumbnail_image.alt %}
+                    {% set title = content['#node'].title.value %}
+    
+                    {% include directory ~ '/inc/resource.html.twig' %}
+    
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
+{% if content.field_show_section_04 %}
 <section id="05">
     <div class="container-fluid">
         <div class="artist"></div>
     </div>
 </section>
+{% endif %}
 
 <div id="artwork-scrollspy" class="border">
     <ol class="nav nav-pills nav-stacked">
         <li class="active"><a href="#">Introduction</a></li>
-        <li><a href="#02">About the location</a></li>
-        <li><a href="#03">About the project</a></li>
+        {% if content.field_show_section_01 %}<li><a href="#02">About the location</a></li>{% endif %}
+        {% if content.field_show_section_03 %}<li><a href="#03">About the project</a></li>{% endif %}
         <li><a href="#04">Media & Resources</a></li>
-        <li><a href="#05">Artist information</a></li>
+        {% if content.field_show_section_04 %}<li><a href="#05">Artist information</a></li>{% endif %}
     </ol>
 </div>

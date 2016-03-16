@@ -20,6 +20,7 @@ bootstrap:
 
 mapbox:
   version: 2.2.1
+  header: true
   css:
     theme:
       css/lib/mapbox.css: {}
@@ -36,8 +37,3 @@ global-styling:
     js/main.js: {}
   dependencies:
     - core/jquery
-
-js-header:
-  header: true
-  js:
-    js/lib/mapbox.js: {}

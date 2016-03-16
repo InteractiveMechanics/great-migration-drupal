@@ -1,0 +1,107 @@
+{#
+/**
+ * @file
+ * Default theme implementation for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ *
+ * @ingroup themeable
+ */
+#}
+{%
+  set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+  ]
+%}
+<section class="container-fluid">
+    <div id="homepage-carousel" class="carousel slide" data-interval="8000" data-ride="carousel">                
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="carousel-image border">
+                    <img src="http://placehold.it/720x600" alt="#">
+                </div>
+                <div class="carousel-details-container">
+                    <img src="http://placehold.it/720x250" alt="#">
+                    <div class="carousel-details">
+                        <h3>Artist Installation</h3>
+                        <h1>Salisbury</h1>
+                        <p>A short experimental film about the choice of migration and the choice of remaining. It is shot in Salisbury, North Carolina by Kevin Jerome Everson.</p>
+                        <a href="#" class="btn btn-default btn-lg btn-inverted">Explore this project <span class="arrow">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-image border">
+                    <img src="http://placehold.it/720x600" alt="#">
+                </div>
+                <div class="carousel-details-container">
+                    <img src="http://placehold.it/720x250" alt="#">
+                    <div class="carousel-details">
+                        <h3>Artist Installation</h3>
+                        <h1>Salisbury</h1>
+                        <p>A short experimental film about the choice of migration and the choice of remaining. It is shot in Salisbury, North Carolina by Kevin Jerome Everson.</p>
+                        <a href="#" class="btn btn-default btn-lg btn-inverted">Explore this project <span class="arrow">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="carousel-image border">
+                    <img src="http://placehold.it/720x600" alt="#">
+                </div>
+                <div class="carousel-details-container">
+                    <img src="http://placehold.it/720x250" alt="#">
+                    <div class="carousel-details">
+                        <h3>Artist Installation</h3>
+                        <h1>Salisbury</h1>
+                        <p>A short experimental film about the choice of migration and the choice of remaining. It is shot in Salisbury, North Carolina by Kevin Jerome Everson.</p>
+                        <a href="#" class="btn btn-default btn-lg btn-inverted">Explore this project <span class="arrow">&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#homepage-carousel" data-slide-to="1"></li>
+            <li data-target="#homepage-carousel" data-slide-to="2"></li>
+        </ol>
+    </div>
+</section>
+<section class="artwork-array">
+    <div class="container">
+        <div class="flex-container">
+            {{ exposed }}
+            {{ attachment_before }}
+            
+            {{ rows }}
+            {{ empty }}
+        </div>
+    </div>
+    {{ pager }}
+    {{ attachment_after }}
+    {{ more }}
+</section>
+
