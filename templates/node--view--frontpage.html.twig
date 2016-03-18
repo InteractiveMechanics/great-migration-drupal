@@ -65,9 +65,26 @@
  * @ingroup themeable
  */
 #}
-<a class="artwork-container" href="{{ url }}">
+{% set type = node.type[0].value.target_id %}
+<a class="artwork-container {{ type }}" 
+    {% if type == "events" %}
+        href="{{ content.field_link.0['#url'].uri }}" target="_blank"
+    {% else %}
+        href="{{ url }}"
+    {% endif %}
+    >
     <div class="artwork-content">
-        <h4>History & Context</h4>
+        {% if type == "artwork" %}
+            {% if content.field_artwork_type.0['#url'].routeParameters['taxonomy_term'] == 1 %}
+                <h4>{{ content.field_artists.0['#field_collection_item'].field_artist_name.value }}</h4>
+            {% elseif content.field_artwork_type.0['#url'].routeParameters['taxonomy_term'] == 2 %}
+                <h4>{{ content.field_artwork_type.0['#title'] }}</h4>
+            {% endif %}
+        {% elseif type == "events" %}
+            <h4>{{ node.field_date[0].value|date('F d, Y', false) }}</h4>
+        {% elseif type == "history" %}
+            <h4>History in Context</h4>
+        {% endif %}
         <h3>{{ node.title[0].value }}</h3>
     </div>
     <div class="overlay border"></div>

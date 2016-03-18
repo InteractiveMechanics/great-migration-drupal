@@ -104,25 +104,25 @@ main {
     max-width: 100%;
     height: auto;
     margin-bottom: 25px; }
-  .page .caption {
+  .page figure {
     display: table;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     margin-bottom: 15px;
     max-width: 65%; }
     @media screen and (max-width: 991px) {
-      .page .caption {
+      .page figure {
         max-width: 50%; } }
     @media screen and (max-width: 767px) {
-      .page .caption {
+      .page figure {
         max-width: 100%; } }
-    .page .caption > img {
+    .page figure > img {
       padding: 0;
       border: none;
       display: block;
       width: 100%;
       max-width: 100%;
       margin: 0; }
-    .page .caption > figcaption {
+    .page figure > figcaption {
       border: none;
       padding: 15px 10px;
       background: #f1f2f2;
@@ -650,7 +650,7 @@ input.input-lg {
     display: block;
     cursor: pointer;
     position: relative;
-    margin: 30px 0 0; }
+    margin: 15px 0; }
     .flex-container .artwork-container:first-of-type {
       margin-top: 0; }
     .flex-container .artwork-container img {
@@ -690,17 +690,17 @@ input.input-lg {
       background: rgba(0, 0, 0, 0.5);
       z-index: 1;
       transition: 0.5s all; }
-    .flex-container .artwork-container.artist-installation h4 {
+    .flex-container .artwork-container.artwork h4 {
       color: #FCEDBF; }
-    .flex-container .artwork-container.artist-installation:hover .overlay, .flex-container .artwork-container.artist-installation:focus .overlay, .flex-container .artwork-container.artist-installation:active .overlay {
+    .flex-container .artwork-container.artwork:hover .overlay, .flex-container .artwork-container.artwork:focus .overlay, .flex-container .artwork-container.artwork:active .overlay {
       background: rgba(125, 109, 57, 0.75); }
-    .flex-container .artwork-container.precious-places h4 {
+    .flex-container .artwork-container.preciousplaces h4 {
       color: #F9C7A7; }
-    .flex-container .artwork-container.precious-places:hover .overlay, .flex-container .artwork-container.precious-places:focus .overlay, .flex-container .artwork-container.precious-places:active .overlay {
+    .flex-container .artwork-container.preciousplaces:hover .overlay, .flex-container .artwork-container.preciousplaces:focus .overlay, .flex-container .artwork-container.preciousplaces:active .overlay {
       background: rgba(122, 75, 45, 0.75); }
-    .flex-container .artwork-container.history-context h4 {
+    .flex-container .artwork-container.history h4 {
       color: #8DAC62; }
-    .flex-container .artwork-container.history-context:hover .overlay, .flex-container .artwork-container.history-context:focus .overlay, .flex-container .artwork-container.history-context:active .overlay {
+    .flex-container .artwork-container.history:hover .overlay, .flex-container .artwork-container.history:focus .overlay, .flex-container .artwork-container.history:active .overlay {
       background: rgba(100, 121, 70, 0.75); }
     .flex-container .artwork-container.events h4 {
       color: #DAF1F9; }
@@ -714,7 +714,7 @@ input.input-lg {
   background: rgba(0, 0, 0, 0.65);
   padding: 30px;
   width: 220px;
-  z-index: 9999; }
+  z-index: 999; }
   @media screen and (max-width: 991px) {
     #artwork-scrollspy {
       display: none; } }
@@ -730,7 +730,8 @@ input.input-lg {
     #artwork-scrollspy .nav li.active a {
       background: none;
       color: white;
-      opacity: 1; }
+      opacity: 1;
+      padding-left: 15px; }
 
 .content-container {
   height: auto;

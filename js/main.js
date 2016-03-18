@@ -25,4 +25,59 @@
         setInterval(changeImage, 5000);
     }
 
+    $('a[href*="#"]:not([href="#"])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
+
+    // Launch galleries for video/images
+    $('#launch-gallery').on('click', function() {
+        var images = $(this).attr('data-src-images').split(',');
+        var array = [];
+        $.each(images, function(i, val){
+            var json = {
+                "src": val
+            };
+            array.push(json);
+        });
+        console.log(array);
+        $(this).lightGallery({
+            mode: 'lg-fade',
+            dynamic: true,
+            thumbnail: false,
+            fullScreen: false,
+            zoom: false,
+            download: false,
+            autoplay: false,
+            dynamicEl: array
+        });
+    });
+    $('#launch-video').on('click', function() {
+        var video = $(this).attr('data-src-video');
+        $(this).lightGallery({
+            mode: 'lg-fade',
+            dynamic: true,
+            thumbnail: false,
+            fullScreen: false,
+            zoom: false,
+            download: false,
+            autoplay: false,
+            vimeoPlayerParams: {
+                badge: 0,
+                byline: 0,
+                portrait: 0,
+                title: 0
+            },
+            dynamicEl: [{'src': video}]
+        });
+    });
+
 })(jQuery);

@@ -65,7 +65,7 @@
  * @ingroup themeable
  */
 #}
-<section class="container-fluid">
+<section id="01" class="container-fluid">
     <div class="artwork-hero-inner">                
         <div class="artwork-hero-image border">
             {% for key, content in content.field_poster_images if key|first != '#' %}
@@ -84,13 +84,24 @@
                 <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
                 <h1>{{ node.title.value }}</h1>
                 <p>{{ content.body }}</p>
-                <a href="#" class="btn btn-default btn-lg btn-inverted"><span class="glyphicon glyphicon-picture"></span> View the Gallery</a><br/>
-                <a href="#" class="btn btn-default btn-lg btn-inverted"><span class="glyphicon glyphicon-facetime-video"></span> Watch the Artist Statement</a>
+                {% if content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}
+                    <a 
+                        id="launch-gallery" 
+                        class="btn btn-default btn-lg btn-inverted"
+                        data-src-images='{% for image in content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}{{- file_url(image.entity.uri.value) -}}{% if not loop.last %}, {% endif %}{% endfor %}'><span class="glyphicon glyphicon-picture"></span> View the Gallery</a><br/>
+                {% endif %}
+                {% if content.field_media_ %}
+                    <a 
+                        id="launch-video"
+                        class="btn btn-default btn-lg btn-inverted"
+                        data-src-video="'{{ content.field_media_.0['#node'].field_media_vimeo_link.value }}'"><span class="glyphicon glyphicon-facetime-video"></span> Watch the Artist Statement</a>
+                {% endif %}
             </div>
         </div>
     </div>
 </section>
 {% if content.field_show_section_01 %}
+    {% set field_location = content.field_location.0['#field_collection_item'] %}
     <section id="02" class="page">
         <div class="content-container">
             <div class="content content-left">
@@ -106,11 +117,67 @@
             <script>
                 // Let's make a pretty map!
                 // Tossing this here, since we need to manipulate it on the fly
-                // based on what gets returned by the page
+                // based on what gets returned by the page.
                 L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
                 var map = L.mapbox.map('map', 'mapbox.streets');
-                map.setView([40, -74.50], 10);
+                map.setView([{{ field_location.field_latitude.value }}, {{ field_location.field_longitude.value }}], 16);
                 map.scrollWheelZoom.disable();
+
+                // Our feature layer for generating all icons and points.
+                // Loops through all oral histories with location data.
+                var pointLayer = L.mapbox.featureLayer().addTo(map);
+                var geoJson = [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [
+                            {{ field_location.field_longitude.value }},
+                            {{ field_location.field_latitude.value }}
+                        ]
+                    },
+                    properties: {
+                        title: '{{ node.title.value }}',
+                        "icon": {
+                            "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-primary.svg",
+                            "iconSize": [50, 50], // size of the icon
+                            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+                            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+                            "className": "primary"
+                        }
+                    }
+                }
+                {#
+                {% for key, content in content.field_media_other if key|first != '#' %}
+                    {% set field_location = content['#node'].field_location.0['#field_collection_item'] %}
+                    ,{
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [
+                                {{ field_location.field_longitude.value }},
+                                {{ field_location.field_latitude.value }}
+                            ]
+                        },
+                        properties: {
+                            title: '{{ content['#node'].title.value }}',
+                            "icon": {
+                                "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-audio.svg",
+                                "iconSize": [40, 40], // size of the icon
+                                "iconAnchor": [20, 20], // point of the icon which will correspond to marker's location
+                                "popupAnchor": [0, -20], // point from which the popup should open relative to the iconAnchor
+                                "className": "audio"
+                            }
+                        }
+                    }
+                {% endfor %}
+                #}
+                ];
+                pointLayer.on('layeradd', function(e) {
+                    var marker = e.layer,
+                    feature = marker.feature;
+                    marker.setIcon(L.icon(feature.properties.icon));
+                });
+                pointLayer.setGeoJSON(geoJson);
             </script>
         {% endif %}
     </section>
@@ -119,11 +186,11 @@
 <section id="03" class="page">
     <div class="content-container">
         <div class="images images-left">
-            
+            {{ content.field_about_the_project_image }}
         </div>            
         <div class="content content-right">
             <h3>About the project</h3>
-            <p>Morbi dapibus sed magna in auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam et lorem id magna sollicitudin condimentum eu vitae quam. Fusce pellentesque, ipsum in ultrices commodo, turpis leo faucibus lorem, non efficitur leo lacus maximus lacus. Mauris rhoncus felis sit amet sem aliquet sagittis. Donec odio est, interdum id placerat eu, lacinia vestibulum mi. Etiam id libero in massa tincidunt pellentesque. Quisque non aliquet enim. Mauris vehicula, risus nec sollicitudin commodo, tortor augue facilisis arcu, sed maximus orci risus quis felis. Integer euismod lacus quis massa efficitur, a bibendum magna sollicitudin. In hendrerit, tellus eget mollis tristique, ipsum diam sagittis nulla, in aliquam tellus justo sit amet nibh.</p>
+            <p>{{ content.field_about_the_project_body }}</p>
         </div>
     </div>
 </section>
@@ -157,14 +224,16 @@
 {% if content.field_show_section_04 %}
 <section id="05">
     <div class="container-fluid">
-        <div class="artist"></div>
+        <div class="artist">
+            
+        </div>
     </div>
 </section>
 {% endif %}
 
 <div id="artwork-scrollspy" class="border">
     <ol class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Introduction</a></li>
+        <li class="active"><a href="#01">Introduction</a></li>
         {% if content.field_show_section_01 %}<li><a href="#02">About the location</a></li>{% endif %}
         {% if content.field_show_section_03 %}<li><a href="#03">About the project</a></li>{% endif %}
         <li><a href="#04">Media & Resources</a></li>

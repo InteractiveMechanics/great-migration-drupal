@@ -12,7 +12,7 @@
     -moz-column-gap: 30px;
     -webkit-column-gap: 30px;
     column-gap: 30px;
-
+    
     @media screen and #{$screen-ltmd} {
         -moz-column-count: 2;
         -webkit-column-count: 2;
@@ -31,7 +31,7 @@
         display: block;
         cursor: pointer;
         position: relative;
-        margin: 30px 0 0;
+        margin: 15px 0;
 
         &:first-of-type {
             margin-top: 0;
@@ -82,7 +82,7 @@
             transition: 0.5s all;
         }
 
-        &.artist-installation {
+        &.artwork {
             h4 {
                 color: $accentyellow;
             }
@@ -93,7 +93,7 @@
                 }
             }
         }
-        &.precious-places {
+        &.preciousplaces {
             h4 {
                 color: $accentred;
             }
@@ -104,7 +104,7 @@
                 }
             }
         }
-        &.history-context {
+        &.history {
             h4 {
                 color: $accentgreen;
             }
