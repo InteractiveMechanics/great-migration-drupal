@@ -11,3 +11,10 @@ libraries:
   - greatmigration/bootstrap
   - greatmigration/mapbox
   - greatmigration/global-styling
+
+# Regions
+regions:
+  primary_menu: 'Primary Menu'
+  highlighted: 'Highlighted'
+  featured: 'Featured Slideshow'
+  content: 'Content'

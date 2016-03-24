@@ -151,6 +151,8 @@ nav.navbar {
   border: none;
   height: 100px;
   transition: 0.5s all; }
+  #toolbar-administration + nav.navbar {
+    top: 79px; }
   @media screen and (min-width: 768px) {
     nav.navbar.scrolled {
       height: 80px;
@@ -289,6 +291,19 @@ footer {
       text-decoration: underline; }
       footer p a:hover, footer p a:focus, footer p a:active {
         color: #8d8f93; }
+
+#homepage-carousel {
+  margin-top: 100px; }
+
+.map-marker {
+  width: 50px !important;
+  height: 50px;
+  background: url(img/marker-primary.svg) no-repeat center center;
+  background-size: 90%;
+  position: absolute;
+  top: 125px;
+  left: 50%;
+  margin-left: -20px; }
 
 .artwork-hero-inner,
 .carousel-inner {

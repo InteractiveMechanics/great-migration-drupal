@@ -4,6 +4,10 @@ nav.navbar {
     height: 100px;
     transition: 0.5s all;
 
+    #toolbar-administration + & {
+        top: 79px;
+    }
+
     @media screen and #{$screen-gtxs} {
         &.scrolled {
             height: 80px;

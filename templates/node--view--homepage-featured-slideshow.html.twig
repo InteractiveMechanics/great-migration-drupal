@@ -1,0 +1,23 @@
+<div class="carousel-image border">
+    <img src="{{ file_url(content.field_poster_images.0['#item'].entity.uri.value) }}" alt="{{ content.field_poster_images.0['#item'].alt }}">
+</div>
+<div class="carousel-details-container">
+    <img id="map-{{ node.nid.value }}" alt="{{ node.title.value }}" />
+    <img class="map-marker" />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
+    <script>
+        {% set field_location = content.field_location.0['#field_collection_item'] %}
+        L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
+        document.getElementById('map-{{ node.nid.value }}').src =
+            'https://api.mapbox.com/v4/mapbox.streets/' +
+            '{{ field_location.field_longitude.value }},{{ field_location.field_latitude.value }},15/' +
+            '720x250.png' +
+            '?access_token=' + L.mapbox.accessToken;
+    </script>
+    <div class="carousel-details">
+        <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
+        <h1>{{ node.title.value }}</h1>
+        <p>{{ content.body }}</p>
+        <a href="{{ url }}" class="btn btn-default btn-lg btn-inverted">Explore this project <span class="arrow">&rarr;</span></a>
+    </div>
+</div>
