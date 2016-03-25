@@ -84,17 +84,47 @@
                 <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
                 <h1>{{ node.title.value }}</h1>
                 <p>{{ content.body }}</p>
+
+
                 {% if content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}
                     <a 
-                        id="launch-gallery" 
-                        class="btn btn-default btn-lg btn-inverted"
-                        data-src-images='{% for image in content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}{{- file_url(image.entity.uri.value) -}}{% if not loop.last %}, {% endif %}{% endfor %}'><span class="glyphicon glyphicon-picture"></span> View the Gallery</a><br/>
+                        class="launch-gallery btn btn-default btn-lg btn-inverted"
+                        data-src-images='{% for image in content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}{{- file_url(image.entity.uri.value) -}}{% if not loop.last %}, {% endif %}{% endfor %}'>
+                            <span class="glyphicon glyphicon-picture"></span> View the gallery
+                    </a><br/>
                 {% endif %}
+                {% if content.field_media_primary_artwork.0['#node'].field_media_vimeo_link %}
+                    <a 
+                        class="launch-video btn btn-default btn-lg btn-inverted"
+                        data-src-video="'{{ content.field_media_primary_artwork.0['#node'].field_media_vimeo_link.value }}'">
+                            <span class="glyphicon glyphicon-facetime-video"></span> Watch the video
+                    </a><br/>
+                {% endif %}
+                {% if content.field_media_primary_artwork.0['#node'].field_link %}
+                    <a 
+                        class="launch-link btn btn-default btn-lg btn-inverted"
+                        {% if field_media_primary_artwork.0['#node'].field_open_in_popup == 1 %}
+                            onclick="window.open({{ field_media_primary_artwork.0['#node'].field_link }},'_blank','toolbar=no, resizable=yes, top=50, left=50, width={{ field_media_primary_artwork.0['#node'].field_popup_width }}, height={{ field_media_primary_artwork.0['#node'].field_popup_height }}')"
+                        {% else %}
+                            href="{{ field_media_primary_artwork.0['#node'].field_link }}" target="_blank"
+                        {% endif %}
+                            >
+                            <span class="glyphicon glyphicon-share-alt"></span> View the project
+                    </a><br/>
+                {% endif %}
+                {% if content.field_media_primary_artwork.0['#node'].field_media_audio_file %}
+                    <a 
+                        class="launch-audio btn btn-default btn-lg btn-inverted"
+                        data-src-audio="{{ content.field_media_primary_artwork.0['#node'].field_media_audio_file.value }}">
+                            <span class="glyphicon glyphicon-volume-up"></span> Listen to the project
+                    </a><br/>
+                {% endif %}
+
+
                 {% if content.field_media_ %}
                     <a 
-                        id="launch-video"
-                        class="btn btn-default btn-lg btn-inverted"
-                        data-src-video="'{{ content.field_media_.0['#node'].field_media_vimeo_link.value }}'"><span class="glyphicon glyphicon-facetime-video"></span> Watch the Artist Statement</a>
+                        class="launch-video btn btn-default btn-lg btn-inverted"
+                        data-src-video="'{{ content.field_media_.0['#node'].field_media_vimeo_link.value }}'"><span class="glyphicon glyphicon-facetime-video"></span> Watch the artist statement</a>
                 {% endif %}
             </div>
         </div>
@@ -213,6 +243,22 @@
                     {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
                     {% set alt = content['#node'].field_thumbnail_image.alt %}
                     {% set title = content['#node'].title.value %}
+                    {% set images = '' %}
+                    {% set video = '' %}
+                    {% set audio = '' %}
+
+                    {% if content['#node'].field_media_gallery_images %}
+                        {% set id = "launch-gallery" %}
+                        {% set images = content['#node'].field_media_gallery_images %}
+                    {% endif %}
+                    {% if content['#node'].field_media_vimeo_link %}
+                        {% set id = "launch-video" %}
+                        {% set video = content['#node'].field_media_vimeo_link.value %}
+                    {% endif %}
+                    {% if content['#node'].field_media_audio_file %}
+                        {% set id = "launch-audio" %}
+                        {% set audio = content['#node'].field_media_audio_file.entity.uri.value %}
+                    {% endif %}
     
                     {% include directory ~ '/inc/resource.html.twig' %}
     
@@ -224,12 +270,34 @@
 {% if content.field_show_section_04 %}
 <section id="05">
     <div class="container-fluid">
-        <div class="artist">
-            
+        <div class="artists">
+        {% for key, artist in content.field_artists if key|first != '#' %}
+            {% set artist = artist['#field_collection_item']%}
+            <div class="artist">
+                <div class="artist-metadata">
+                    <div class="artist-image">
+                        {% if artist.field_artist_image.entity %}
+                            <img src="{{ file_url(artist.field_artist_image.entity.uri.value) }}" alt="{{ artist.field_artist_image.alt }}" />
+                        {% endif %}
+                    </div>
+                    <h2>{{ artist.field_artist_name.value }}
+                        <small>{{ artist.field_artist_title.value }}</small>
+                    </h2>
+                </div>
+                {{ artist.field_artist_bio.value | raw }}
+                {% if artist.field_artist_website %}
+                    <a href="{{ artist.field_artist_website.uri }}" target="_blank" class="btn btn-default btn-lg">View the artist's website</a>
+                {% endif %}
+            </div>
+        {% endfor %}
         </div>
     </div>
 </section>
 {% endif %}
+
+<div id="audio-player" class="hidden fade">
+    <audio src="" controls autoplay preload="none"></audio>
+</div>
 
 <div id="artwork-scrollspy" class="border">
     <ol class="nav nav-pills nav-stacked">

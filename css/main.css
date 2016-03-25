@@ -82,6 +82,10 @@ h3 {
     color: #A7A9AC;
     font-weight: bold; }
 
+html,
+body {
+  overflow-x: hidden; }
+
 main {
   margin-top: 100px; }
 
@@ -729,7 +733,7 @@ input.input-lg {
   background: rgba(0, 0, 0, 0.65);
   padding: 30px;
   width: 220px;
-  z-index: 999; }
+  z-index: 1001; }
   @media screen and (max-width: 991px) {
     #artwork-scrollspy {
       display: none; } }
@@ -748,20 +752,84 @@ input.input-lg {
       opacity: 1;
       padding-left: 15px; }
 
+#audio-player {
+  position: fixed !important;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -150px;
+  z-index: 1001;
+  width: 300px; }
+
+.artists {
+  margin: 60px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .artists .artist {
+    width: 46%;
+    margin: 2%;
+    text-align: center; }
+    @media screen and (max-width: 991px) {
+      .artists .artist {
+        width: 100%;
+        margin: 0; } }
+    .artists .artist .artist-metadata {
+      display: flex;
+      justify-content: center; }
+    .artists .artist .artist-image {
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      border-radius: 99px;
+      float: left;
+      margin-right: 20px; }
+      .artists .artist .artist-image img {
+        width: auto;
+        height: 100%; }
+    .artists .artist h2 {
+      margin: 2px 0 0;
+      float: left;
+      font-size: 2.4rem;
+      text-align: left; }
+    .artists .artist small {
+      margin: 5px 0 0;
+      display: block;
+      font-style: italic;
+      font-size: 1.8rem; }
+    .artists .artist p {
+      clear: both;
+      margin: 10px 0 20px; }
+
 .content-container {
   height: auto;
   padding: 50px 0; }
   .content-container .content {
     padding: 0 30px;
     width: 50%;
-    display: inline-block; }
+    display: inline-block;
+    vertical-align: top; }
     .content-container .content.content-left {
       padding-left: 60px; }
     .content-container .content.content-right {
       padding-right: 60px; }
   .content-container .images {
     width: 45%;
-    display: inline-block; }
+    display: inline-block;
+    vertical-align: top; }
+    .content-container .images.images-left img {
+      transform: rotate(-2deg) translateX(-50px); }
+    .content-container .images.images-right {
+      margin-left: 4%; }
+      .content-container .images.images-right img {
+        transform: rotate(2deg) translateX(75px); }
+    .content-container .images img {
+      border: 20px solid #EFEFDC;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      margin: 0;
+      margin-top: -30px;
+      vertical-align: bottom;
+      position: relative;
+      z-index: 3; }
 
 .events {
   margin: 30px 0 0; }

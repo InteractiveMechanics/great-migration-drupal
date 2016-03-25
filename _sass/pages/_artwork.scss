@@ -5,7 +5,7 @@
     background: rgba(0,0,0,0.65);
     padding: 30px;
     width: 220px;
-    z-index: 999;
+    z-index: 1001;
 
     @media screen and #{$screen-ltmd} {
         display: none;
@@ -38,6 +38,67 @@
     }
 }
 
+#audio-player {
+    position: fixed !important;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 1001;
+    width: 300px;
+}
+
+.artists {
+    margin: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .artist {
+        width: 46%;
+        margin: 2%;
+        text-align: center;
+
+        @media screen and #{$screen-ltmd} {
+            width: 100%;
+            margin: 0;
+        }
+
+        .artist-metadata {
+            display: flex;
+            justify-content: center;
+        }
+        .artist-image {
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 99px;
+            float: left;
+            margin-right: 20px;
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+        h2 {
+            margin: 2px 0 0;
+            float: left;
+            font-size: 2.4rem;
+            text-align: left;
+        }
+        small {
+            margin: 5px 0 0;
+            display: block;
+            font-style: italic;
+            font-size: 1.8rem;
+        }
+        p {
+            clear: both;
+            margin: 10px 0 20px;
+        }
+    }
+}
+
 .content-container {
     height: auto;
     padding: 50px 0;
@@ -46,6 +107,7 @@
         padding: 0 30px;
         width: 50%;
         display: inline-block;
+        vertical-align: top;
 
         &.content-left {
             padding-left: 60px;
@@ -57,5 +119,27 @@
     .images {
         width: 45%;
         display: inline-block;
+        vertical-align: top;
+
+        &.images-left img {
+            transform: rotate(-2deg) translateX(-50px);
+        }
+        &.images-right {
+            margin-left: 4%;
+
+            img {
+                transform: rotate(2deg) translateX(75px);
+            }
+        }
+
+        img {
+            border: 20px solid #EFEFDC;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin: 0;
+            margin-top: -30px;
+            vertical-align: bottom;
+            position: relative;
+            z-index: 3;
+        }
     }
 }

@@ -1,4 +1,9 @@
- <a class="resource-container" {% if uri %} href="{{ uri }}" {% endif %} target="_blank">
+ <a class="resource-container {% if id %}{{ id }}{% endif %}" 
+    {% if uri %} href="{{ uri }}" target="_blank" {% endif %}
+    {% if images %} data-src-images='{% for image in images %}{{- file_url(image.entity.uri.value) -}}{% if not loop.last %}, {% endif %}{% endfor %}' {% endif %}
+    {% if video %} data-src-video="'{{ video }}'" {% endif %}
+    {% if audio %} data-src-audio="{{ file_url(audio) }}" {% endif %}
+    >
     <div class="resource-image border">
         <img src="{{ file_url(image) }}" alt="{{ alt }}" />
     </div>

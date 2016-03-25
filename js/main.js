@@ -39,7 +39,7 @@
     });
 
     // Launch galleries for video/images
-    $('#launch-gallery').on('click', function() {
+    $('.launch-gallery').on('click tap', function() {
         var images = $(this).attr('data-src-images').split(',');
         var array = [];
         $.each(images, function(i, val){
@@ -60,7 +60,7 @@
             dynamicEl: array
         });
     });
-    $('#launch-video').on('click', function() {
+    $('.launch-video').on('click tap', function() {
         var video = $(this).attr('data-src-video');
         $(this).lightGallery({
             mode: 'lg-fade',
@@ -78,6 +78,19 @@
             },
             dynamicEl: [{'src': video}]
         });
+    });
+    $('.launch-audio').on('click tap', function() {
+        var audio = $(this).attr('data-src-audio');
+        $('#audio-player').removeClass('hidden').delay(100).queue(function (next) {
+            $(this).addClass('in').find('audio').attr('src', audio);
+            next();
+        });
+        $('#audio-player audio').on('ended', function() { 
+            $('#audio-player').removeClass('in').delay(500).queue(function (next) {
+                $(this).addClass('hidden');
+                next();
+            });
+        }); 
     });
 
 })(jQuery);
