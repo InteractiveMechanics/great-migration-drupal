@@ -21,6 +21,12 @@ nav.navbar {
                     font-size: 1.3rem;
                     margin-top: 3px;
                 }
+
+                &.logo {
+                    img {
+                        max-height: 55px;
+                    }
+                }
             }
             .navbar-nav {
                 > li {
@@ -51,6 +57,20 @@ nav.navbar {
             margin-top: 8px;
             color: $accentgreen;
             transition: 0.5s all;
+        }
+
+        &.logo {
+            padding: 12px 12px;
+            opacity: 1;
+
+            &:hover, &:focus, &:active {
+                opacity: 0.65;
+            }
+
+            img {
+                max-height: 74px;
+                transition: 0.5s all;
+            }
         }
     }
     .navbar-nav {
