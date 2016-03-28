@@ -24,7 +24,7 @@ nav.navbar {
 
                 &.logo {
                     img {
-                        max-height: 55px;
+                        max-height: 82px;
                     }
                 }
             }
@@ -60,16 +60,23 @@ nav.navbar {
         }
 
         &.logo {
-            padding: 12px 12px;
+            padding: 10px;
             opacity: 1;
 
             &:hover, &:focus, &:active {
-                opacity: 0.65;
+                transform: rotate(-4deg) translate(-5px, 0);
+                -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+                -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+                filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
             }
 
             img {
-                max-height: 74px;
+                max-height: 105px;
                 transition: 0.5s all;
+                transform: rotate(-3deg) translate(-5px, 0);
+                -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+                -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+                filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
             }
         }
     }

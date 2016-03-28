@@ -168,7 +168,7 @@ nav.navbar {
           font-size: 1.3rem;
           margin-top: 3px; }
         nav.navbar.scrolled .navbar-brand.logo img {
-          max-height: 55px; }
+          max-height: 82px; }
       nav.navbar.scrolled .navbar-nav > li a {
         padding: 30px 0 6px;
         font-size: 1.3rem; } }
@@ -190,13 +190,20 @@ nav.navbar {
       color: #8DAC62;
       transition: 0.5s all; }
     nav.navbar .navbar-brand.logo {
-      padding: 12px 12px;
+      padding: 10px;
       opacity: 1; }
       nav.navbar .navbar-brand.logo:hover, nav.navbar .navbar-brand.logo:focus, nav.navbar .navbar-brand.logo:active {
-        opacity: 0.65; }
+        transform: rotate(-4deg) translate(-5px, 0);
+        -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+        -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5)); }
       nav.navbar .navbar-brand.logo img {
-        max-height: 74px;
-        transition: 0.5s all; }
+        max-height: 105px;
+        transition: 0.5s all;
+        transform: rotate(-3deg) translate(-5px, 0);
+        -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+        -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+        filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35)); }
   nav.navbar .navbar-nav > li.open > a {
     background: none;
     border-bottom: none; }
