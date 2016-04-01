@@ -336,6 +336,14 @@ footer {
     .artwork-hero-inner,
     .carousel-inner {
       height: 600px; } }
+  .artwork-hero-inner.preciousplaces .artwork-hero-details-container,
+  .carousel-inner.preciousplaces .artwork-hero-details-container {
+    background: #e56e4a; }
+  .artwork-hero-inner.preciousplaces .btn:hover, .artwork-hero-inner.preciousplaces .btn:focus, .artwork-hero-inner.preciousplaces .btn:active,
+  .carousel-inner.preciousplaces .btn:hover,
+  .carousel-inner.preciousplaces .btn:focus,
+  .carousel-inner.preciousplaces .btn:active {
+    color: #e56e4a; }
   .artwork-hero-inner .carousel-image,
   .artwork-hero-inner .artwork-hero-image,
   .carousel-inner .carousel-image,
@@ -425,7 +433,7 @@ footer {
       .carousel-inner .artwork-hero-details-container .carousel-details h1,
       .carousel-inner .artwork-hero-details-container .artwork-hero-details h1 {
         color: white;
-        font-size: 6.0rem;
+        font-size: 5.4rem;
         margin: 0 0 25px; }
         @media screen and (max-width: 767px) {
           .artwork-hero-inner .carousel-details-container .carousel-details h1,
@@ -446,7 +454,8 @@ footer {
       .carousel-inner .artwork-hero-details-container .carousel-details h3,
       .carousel-inner .artwork-hero-details-container .artwork-hero-details h3 {
         color: white;
-        margin: 0 0 10px; }
+        margin: 0 0 10px;
+        font-size: 1.9rem; }
       .artwork-hero-inner .carousel-details-container .carousel-details p,
       .artwork-hero-inner .carousel-details-container .artwork-hero-details p,
       .artwork-hero-inner .artwork-hero-details-container .carousel-details p,
@@ -455,10 +464,10 @@ footer {
       .carousel-inner .carousel-details-container .artwork-hero-details p,
       .carousel-inner .artwork-hero-details-container .carousel-details p,
       .carousel-inner .artwork-hero-details-container .artwork-hero-details p {
-        font-size: 2.1rem;
+        font-size: 1.8rem;
         color: white;
         margin: 0 0 25px;
-        line-height: 1.6; }
+        line-height: 1.8; }
         @media screen and (max-width: 767px) {
           .artwork-hero-inner .carousel-details-container .carousel-details p,
           .artwork-hero-inner .carousel-details-container .artwork-hero-details p,
@@ -522,7 +531,7 @@ footer {
 .btn {
   border-radius: 0;
   background: none;
-  border-width: 3px;
+  border-width: 2px;
   margin-bottom: 15px; }
   .btn.btn-default {
     border-color: #8DAC62;
@@ -539,12 +548,12 @@ footer {
   .btn.btn-lg {
     font-size: 2.1rem;
     padding: 14px 30px;
-    border-width: 4px; }
+    border-width: 3px; }
     @media screen and (max-width: 767px) {
       .btn.btn-lg {
         font-size: 1.8rem;
         padding: 12px 26px;
-        border-width: 3px; } }
+        border-width: 2px; } }
 
 .more-link {
   text-align: center;

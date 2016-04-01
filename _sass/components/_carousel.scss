@@ -24,6 +24,17 @@
         height: 600px;
     }
 
+    &.preciousplaces {
+        .artwork-hero-details-container {
+            background: #e56e4a;
+        }
+        .btn {
+            &:hover, &:focus, &:active {
+                color: #e56e4a;
+            }
+        }
+    }
+
     .carousel-image,
     .artwork-hero-image {
         width: 50%;
@@ -88,7 +99,7 @@
 
             h1 {
                 color: white;
-                font-size: 6.0rem;
+                font-size: 5.4rem;
                 margin: 0 0 25px;
                 
                 @media screen and #{$screen-xs} {
@@ -98,12 +109,13 @@
             h3 {
                 color: white;
                 margin: 0 0 10px;
+                font-size: 1.9rem;
             }
             p {
-                font-size: 2.1rem;
+                font-size: 1.8rem;
                 color: white;
                 margin: 0 0 25px;
-                line-height: 1.6;
+                line-height: 1.8;
 
                 @media screen and #{$screen-xs} {
                     font-size: 1.8rem;

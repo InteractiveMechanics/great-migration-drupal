@@ -230,15 +230,6 @@
         <div class="container">
             <h2 class="text-center">Other media and resources</h2>
             <div class="resources">
-                {% for key, content in content.field_resources if key|first != '#' %}
-                    {% set image = content['#node'].field_image.entity.uri.value %}
-                    {% set alt = content['#node'].field_image.alt %}
-                    {% set uri = content['#node'].field_link.uri %}
-                    {% set title = content['#node'].title.value %}
-    
-                    {% include directory ~ '/inc/resource.html.twig' %}
-    
-                {% endfor %}
                 {% for key, content in content.field_media_other if key|first != '#' %}
                     {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
                     {% set alt = content['#node'].field_thumbnail_image.alt %}
@@ -259,6 +250,15 @@
                         {% set id = "launch-audio" %}
                         {% set audio = content['#node'].field_media_audio_file.entity.uri.value %}
                     {% endif %}
+    
+                    {% include directory ~ '/inc/resource.html.twig' %}
+    
+                {% endfor %}
+                {% for key, content in content.field_resources if key|first != '#' %}
+                    {% set image = content['#node'].field_image.entity.uri.value %}
+                    {% set alt = content['#node'].field_image.alt %}
+                    {% set uri = content['#node'].field_link.uri %}
+                    {% set title = content['#node'].title.value %}
     
                     {% include directory ~ '/inc/resource.html.twig' %}
     
