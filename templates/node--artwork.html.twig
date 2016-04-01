@@ -66,7 +66,7 @@
  */
 #}
 <section id="01" class="container-fluid">
-    <div class="artwork-hero-inner">                
+    <div class="artwork-hero-inner {% if content.field_artwork_type.0['#url'].routeParameters['taxonomy_term'] == 2 %}preciousplaces{% endif %}">                
         <div class="artwork-hero-image border">
             {% for key, content in content.field_poster_images if key|first != '#' %}
                 {% set image = content['#item'].entity.uri.value %}
@@ -275,11 +275,11 @@
             {% set artist = artist['#field_collection_item']%}
             <div class="artist">
                 <div class="artist-metadata">
-                    <div class="artist-image">
-                        {% if artist.field_artist_image.entity %}
-                            <img src="{{ file_url(artist.field_artist_image.entity.uri.value) }}" alt="{{ artist.field_artist_image.alt }}" />
-                        {% endif %}
-                    </div>
+                    {% if artist.field_artist_image.0 %}
+                        <div class="artist-image">
+                            <img src="{{ file_url(artist.field_artist_image.entity.uri.value) }}" alt="{{ artist.field_artist_image.entity.alt }}" />
+                        </div>
+                    {% endif %}
                     <h2>{{ artist.field_artist_name.value }}
                         <small>{{ artist.field_artist_title.value }}</small>
                     </h2>
