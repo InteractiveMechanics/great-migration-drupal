@@ -34,7 +34,8 @@ main {
         display: table;
         box-shadow: 0 0 10px rgba(0,0,0,0.15);
         margin-bottom: 15px;
-        max-width: 65%;
+        max-width: 100%;
+        width: 100%;
 
         @media screen and #{$screen-ltmd} {
             max-width: 50%;
@@ -47,15 +48,14 @@ main {
             padding: 0;
             border: none;
             display: block;
-            width: 100%;
             max-width: 100%;
             margin: 0;
+            width: 100%;
         }
         > figcaption {
             border: none;
             padding: 15px 10px;
             background: $lightgray;
-            font-style: italic;
             text-align: center;
             display: table-caption;
             caption-side: bottom;
@@ -67,16 +67,28 @@ main {
 .align-right {
     float: right;
     margin-left: 30px;
+    max-width: 65% !important;
+    width: auto;
 
     @media screen and #{$screen-xs} {
         margin-left: 0;
+    }
+
+    img {
+        width: auto;
     }
 }
 .align-left {
     float: left;
     margin-right: 30px;
+    max-width: 65% !important;
+    width: auto;
 
     @media screen and #{$screen-xs} {
         margin-right: 0;
+    }
+
+    img {
+        width: auto;
     }
 }
