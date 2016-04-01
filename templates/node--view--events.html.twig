@@ -79,7 +79,7 @@
         
         <a href="{{ content.field_link.0['#url'].uri }}" target="_blank">Attend this event</a>
         <span class="divider hidden-xs"></span>
-        {% if field_location.field_latitude and field_location.field_longitude %}
+        {% if field_location.field_latitude.value and field_location.field_longitude.value %}
             <a href="https://www.google.com/maps/@{{ field_location.field_latitude.value  }},{{ field_location.field_longitude.value  }},15z" target="_blank">Get directions</a>
         {% else %}
             <a href="https://www.google.com/maps/place/{{ field_location.field_location_name.value|replace({' ': '+'}) }}" target="_blank">Get directions</a>
