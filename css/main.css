@@ -686,7 +686,8 @@ input.input-lg {
     display: block;
     cursor: pointer;
     position: relative;
-    margin: 15px 0; }
+    margin: 15px 0;
+    min-height: 200px; }
     .flex-container .artwork-container:first-of-type {
       margin-top: 0; }
     .flex-container .artwork-container img {
