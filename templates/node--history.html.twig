@@ -85,6 +85,30 @@
 <section class="artwork-array">
     <div class="container">
         <div class="resources">
+            {% for key, content in content.field_media_other if key|first != '#' %}
+                {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
+                {% set alt = content['#node'].field_thumbnail_image.alt %}
+                {% set title = content['#node'].title.value %}
+                {% set images = '' %}
+                {% set video = '' %}
+                {% set audio = '' %}
+
+                {% if content['#node'].field_media_gallery_images %}
+                    {% set id = "launch-gallery" %}
+                    {% set images = content['#node'].field_media_gallery_images %}
+                {% endif %}
+                {% if content['#node'].field_media_vimeo_link %}
+                    {% set id = "launch-video" %}
+                    {% set video = content['#node'].field_media_vimeo_link.value %}
+                {% endif %}
+                {% if content['#node'].field_media_audio_file %}
+                    {% set id = "launch-audio" %}
+                    {% set audio = content['#node'].field_media_audio_file.entity.uri.value %}
+                {% endif %}
+
+                {% include directory ~ '/inc/resource.html.twig' %}
+
+            {% endfor %}
             {% for key, content in content.field_resources if key|first != '#' %}
                 {% set image = content['#node'].field_image.entity.uri.value %}
                 {% set alt = content['#node'].field_image.alt %}
