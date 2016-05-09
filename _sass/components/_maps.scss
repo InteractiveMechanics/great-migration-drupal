@@ -2,3 +2,69 @@
     height: 700px;
     margin-top: 30px;
 }
+
+.leaflet-popup-content {
+	-webkit-box-shadow: 7px 9px 51px -13px rgba(0,0,0,0.55);
+    -moz-box-shadow: 7px 9px 51px -13px rgba(0,0,0,0.55);
+    box-shadow: 7px 9px 51px -13px rgba(0,0,0,0.55);
+}
+
+.leaflet-popup-tip-container {
+	margin-top: -1px;
+}
+
+.map-popup {
+	padding: 20px 0px 0px;
+	
+	h3 {
+		font-family: "PT Serif", serif;
+		
+		&.type {
+			font-size: 16px;
+			font-style: italic;
+		}
+		
+		&.title {
+		    color: black;
+		    font-size: 20px;
+		    margin: 0px;
+		    line-height: 30px;
+		}
+	}
+	
+	.audio-icon {
+		
+		img {
+			cursor: pointer;
+			transition: all 0.5s ease;
+		}
+	}
+	
+	.overlay-play-icon {
+		position: absolute;
+		top: 9px;
+		right: 0;
+		left: 0;
+		width: 50px;
+		margin: 0 auto;
+		opacity: 1;
+		cursor: pointer;
+		
+		img {
+			transition: all 0.5s ease;
+			opacity: .9;
+		}
+		
+		img:hover {
+			opacity: 1;
+		}
+	}
+}
+	
+@media screen and (max-width: 950px) {
+	.full-map {
+	    height: 300px;
+	    margin-top: 30px;
+	}
+}
+

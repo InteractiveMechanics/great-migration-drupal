@@ -73,9 +73,9 @@
                 {% set alt = content['#item'].alt %}
 
                 {% if loop.first %}
-                    <img src="{{ file_url(image) }}" alt="{{ alt }}" class="in" />
+                    <div style="background-size:cover; background-image:url({{ file_url(image) }})" class="in"></div>
                 {% else %}
-                    <img src="{{ file_url(image) }}" alt="{{ alt }}" />
+                    <div style="background-size:cover; background-image:url({{ file_url(image) }})"></div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -83,12 +83,15 @@
             <div class="artwork-hero-details">
                 <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
                 <h1>{{ node.title.value }}</h1>
+                {% for key, artist in content.field_artists if key|first != '#' %}
+					{% set artist = artist['#field_collection_item']%}
+					{% if artist.field_artist_name.value %}<h2 class="artist-name">By {{ artist.field_artist_name.value }}</h2>{% endif %}
+				{% endfor %}
                 <p>{{ content.body }}</p>
 
-
-                {% if content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}
+				{% if content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}
                     <a 
-                        class="launch-gallery btn btn-default btn-lg btn-inverted"
+                        class="launch-gallery btn btn-default btn-lg btn-inverted" data-sub-html='{% for image in content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}{{ image.alt }}{% if not loop.last %}$ {% endif %}{% endfor %}' 
                         data-src-images='{% for image in content.field_media_primary_artwork.0['#node'].field_media_gallery_images %}{{- file_url(image.entity.uri.value) -}}{% if not loop.last %}, {% endif %}{% endfor %}'>
                             <span class="glyphicon glyphicon-picture"></span> View the gallery
                     </a><br/>
@@ -122,14 +125,20 @@
 
 
                 {% if content.field_media_ %}
-                    <a 
-                        class="launch-video btn btn-default btn-lg btn-inverted"
-                        data-src-video="'{{ content.field_media_.0['#node'].field_media_vimeo_link.value }}'"><span class="glyphicon glyphicon-facetime-video"></span> Watch the artist statement</a>
+                		{% if content.field_media_.0['#node'].field_media_vimeo_link %}
+                		<a 
+                        	class="launch-video btn btn-default btn-lg btn-inverted"
+							data-src-video="'{{ content.field_media_.0['#node'].field_media_vimeo_link.value }}'"><span class="glyphicon glyphicon-facetime-video"></span> Watch the artist statement</a>
+						{% endif %}
                 {% endif %}
             </div>
         </div>
     </div>
 </section>
+
+
+{% set second_location = content.field_second_location.0['#field_collection_item'] %}
+
 {% if content.field_show_section_01 %}
     {% set field_location = content.field_location.0['#field_collection_item'] %}
     <section id="02" class="page">
@@ -143,14 +152,126 @@
             </div>
         </div>
         {% if content.field_show_section_02 %}
+        	<div style="position: relative;">
             <div id="map" class="full-map"></div>
+            
+            {% if second_location %}
+            <div style="width: 425px; height: 350px; position: absolute; right: 0; bottom: 0; border-left: 6px solid white; border-top: 6px solid white;">
+            	<div id="small-map" style="width:100%; height:100%;">
+            	
+            	
+            		<div style='width: 65%; background-color: white; padding: 10px; z-index: 10000; position: relative; font-size:15px;font-family: "PT Serif", serif;'>
+            			<span id="miles"></span> miles from Somewhere, USA
+            		</div>
+            	</div>
+            </div>
+            
+            
             <script>
-                // Let's make a pretty map!
+                L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
+				var map = L.mapbox.map('small-map', 'mapbox.streets');
+				map.setView([{{ field_location.field_latitude.value }}, {{ field_location.field_longitude.value }}], 6);
+				
+				var fixedMarker = L.marker(new L.LatLng({{ second_location.field_second_latitude.value }}, {{ second_location.field_second_longitude.value }}), {});
+				var fc = fixedMarker.getLatLng();
+				var container = document.getElementById('miles');
+				container.innerHTML = parseInt(fc.distanceTo({lat: {{ field_location.field_latitude.value }}, lng: {{ field_location.field_longitude.value }}}).toFixed(0) / 1600);
+                
+				map.scrollWheelZoom.disable();
+				// Disable drag and zoom handlers.
+    
+				map.dragging.disable();
+				map.touchZoom.disable();
+				map.doubleClickZoom.disable();
+				map.scrollWheelZoom.disable();
+				map.keyboard.disable();
+				map.removeControl(map.zoomControl); 
+				// Disable tap handler, if present.
+				if (map.tap) map.tap.disable();
+		
+				// Our feature layer for generating all icons and points.
+				// Loops through all oral histories with location data.
+   
+				console.log({{ field_location.field_longitude.value }});
+				
+				console.log({{ field_location.field_latitude.value }});
+				
+				var pointLayer = L.mapbox.featureLayer().addTo(map);
+				var geoJson = [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [
+                            {{ field_location.field_longitude.value }},
+                            {{ field_location.field_latitude.value }}
+                        ]
+                    },
+                    properties: {
+                        title: '{{ field_location.field_location_name.value }}',
+                        "icon": {
+                            "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-primary.svg",
+                            "iconSize": [50, 50], // size of the icon
+                            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+                            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+                            "className": "primary"
+                        }
+                    }
+                },{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [
+                            {{ second_location.field_second_longitude.value }},
+                            {{ second_location.field_second_latitude.value }}
+                        ]
+                    },
+                    properties: {
+                        title: '{{ second_location.field_second_location_name.value }}',
+                        "icon": {
+                            "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-primary.svg",
+                            "iconSize": [50, 50], // size of the icon
+                            "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+                            "popupAnchor": [0, -25], // point from which the popup should open relative to the iconAnchor
+                            "className": "primary"
+                        }
+                    }
+                }];
+                
+                pointLayer.on('layeradd', function(e) {
+                    var marker = e.layer,
+                    feature = marker.feature;
+                    marker.setIcon(L.icon(feature.properties.icon));
+                });
+                
+                map.on('click', function(ev) {
+	                console.log(ev.latlng);
+	                });
+                pointLayer.setGeoJSON(geoJson);
+            </script>
+            {% endif %}
+            </div>
+            
+            
+
+<script>
+
+	
+
+	window.onload = function(){
+		//alert(jQuery);	
+		jQuery.ajax({
+			dataType: "json",
+			url: "http://dev.interactivemechanics.com/greatmigration/api/audio-points",
+			success: function(data){
+			  	//console.log(data);
+			  	
+			  	
+			  	// Let's make a pretty map!
                 // Tossing this here, since we need to manipulate it on the fly
                 // based on what gets returned by the page.
                 L.mapbox.accessToken = 'pk.eyJ1IjoiaW50ZXJhY3RpdmVtZWNoIiwiYSI6InJlcUtqSk0ifQ.RUwHuEkBbXoJ6SgOnXmYFg';
                 var map = L.mapbox.map('map', 'mapbox.streets');
-                map.setView([{{ field_location.field_latitude.value }}, {{ field_location.field_longitude.value }}], 16);
+                map.setView([{{ field_location.field_latitude.value }}, {{ field_location.field_longitude.value }}], 15);
                 map.scrollWheelZoom.disable();
 
                 // Our feature layer for generating all icons and points.
@@ -167,6 +288,7 @@
                     },
                     properties: {
                         title: '{{ node.title.value }}',
+                        type: '{{ content.field_artwork_type.0['#title'] }}',
                         "icon": {
                             "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-primary.svg",
                             "iconSize": [50, 50], // size of the icon
@@ -202,13 +324,110 @@
                 {% endfor %}
                 #}
                 ];
-                pointLayer.on('layeradd', function(e) {
+                
+                console.log(geoJson);
+                
+                for(var i = 0; i < data.length; i++) {
+			  		var lat = data[i].field_location[0].field_latitude[0].value;
+			  		var long = data[i].field_location[0].field_longitude[0].value;
+			  		var title = data[i].title[0].value;  
+			  		var file = data[i].field_media_audio_file[0].url;
+					var image = "";
+					
+					if(data[i].field_thumbnail_image[0]) {
+						image = data[i].field_thumbnail_image[0].url;
+					} else {
+						image = "http://www.hotelsharbor.com/images/no_photo.png";
+					}
+					
+					
+					var item = {
+				                type: 'Feature',
+				                geometry: {
+				                    type: 'Point',
+				                    coordinates: [
+				                        long,
+				                        lat
+				                    ]
+				                },
+				                properties: {
+				                    title: title,
+				                    type: 'Audio',
+				                    file: file,
+				                    image: image,
+				                    "icon": {
+				                        "iconUrl": "/greatmigration/{{ directory }}/css/img/marker-audio.svg",
+				                        "iconSize": [40, 40], // size of the icon
+				                        "iconAnchor": [20, 20], // point of the icon which will correspond to marker's location
+				                        "popupAnchor": [0, -20], // point from which the popup should open relative to the iconAnchor
+				                        "className": "audio"
+				                    }
+				                }
+				            };
+					
+					geoJson.push(item);
+				}
+				
+				pointLayer.on('layeradd', function(e) {
                     var marker = e.layer,
                     feature = marker.feature;
                     marker.setIcon(L.icon(feature.properties.icon));
+                    // Create custom popup content
+                    var audioHtml = "";
+                    if(feature.properties.file) {
+	                    //audioHtml = "<div class='audio-icon'><img onclick='testMe(this);' data-audio='"+ feature.properties.file +"' src='"+ feature.properties.image +"' width='64' height='64' /></div>";
+	                    
+	                    audioHtml = "<div class='right' style='float: left;width: 35%;position: relative;'>" +
+  	"<div class='audio-icon'>" +
+    	"<img src='"+ feature.properties.image +"' height='64' style='margin-bottom: 0px;'>" +
+  	"</div>" +
+    
+    "<div class='overlay-play-icon'>"+
+      "<img onclick='testMe(this);' data-audio='"+feature.properties.file+"' src='http://dev.interactivemechanics.com/greatmigration/themes/greatmigration/images/play-icon.png'>"+
+    "</div></div>";
+                    }
+                    
+					//var popupContent =  '<div class="map-popup"><h3 class="type">'+feature.properties.type+'</h3><h3 class="title">'+feature.properties.title+'</h3>' + audioHtml + '</div>';
+					
+					
+					var right = "<div class='right' style='float: right;width: 60%;'><h3 class='type'>Audio Clip</h3><h3 class='title'>"+ feature.properties.title +"</h3></div>";
+					var left = audioHtml;
+					
+					var popupContent = '<div class="map-popup">'+ left + right + '<br style="clear:both;" /></div>';
+					
+
+		            // http://leafletjs.com/reference.html#popup
+		            marker.bindPopup(popupContent,{
+		                closeButton: false,
+		                minWidth: 320
+		            });
                 });
                 pointLayer.setGeoJSON(geoJson);
-            </script>
+			}
+		});
+	};
+	
+	function testMe(el) {
+		var audioFile = el.getAttribute("data-audio");
+		var audioTag = document.getElementById("myAudio"); 
+		
+		var audio = audioFile;
+        $('#audio-player').removeClass('hidden').delay(100).queue(function (next) {
+            $(this).addClass('in').find('audio').attr('src', audio);
+            next();
+        });
+        $('#audio-player audio').on('ended', function() { 
+            $('#audio-player').removeClass('in').delay(500).queue(function (next) {
+                $(this).addClass('hidden');
+                next();
+            });
+        }); 
+		
+		//audioTag.src = audioFile;
+        //audioTag.load(); 
+        //audioTag.play();
+	}
+</script>
         {% endif %}
     </section>
 {% endif %}
@@ -225,11 +444,13 @@
     </div>
 </section>
 {% endif %}
+
+{% if content.field_media_other[0] %}
 <section id="04">
-    <div class="media-container">
+    <div class="artwork-array">
         <div class="container">
             <h2 class="text-center">Other media and resources</h2>
-            <div class="resources">
+            <div class="flex-container">
                 {% for key, content in content.field_media_other if key|first != '#' %}
                     {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
                     {% set alt = content['#node'].field_thumbnail_image.alt %}
@@ -267,6 +488,12 @@
         </div>
     </div>
 </section>
+{% else %}
+ 
+<section style="border-bottom:1px solid #ddd;">
+</section>
+
+{% endif %}
 {% if content.field_show_section_04 %}
 <section id="05">
     <div class="container-fluid">
@@ -286,8 +513,10 @@
                 </div>
                 {{ artist.field_artist_bio.value | raw }}
                 {% if artist.field_artist_website %}
-                    <a href="{{ artist.field_artist_website.uri }}" target="_blank" class="btn btn-default btn-lg">View the artist's website</a>
-                {% endif %}
+                	{% if artist.field_artist_website.uri %}
+                   		<a href="{{ artist.field_artist_website.uri }}" target="_blank" class="btn btn-default btn-lg">View the artist's website</a>
+					{% endif %}
+				{% endif %}
             </div>
         {% endfor %}
         </div>
@@ -296,15 +525,16 @@
 {% endif %}
 
 <div id="audio-player" class="hidden fade">
-    <audio src="" controls autoplay preload="none"></audio>
+    <audio id="myAudio" src="" controls autoplay preload="none"></audio>
 </div>
 
+
 <div id="artwork-scrollspy" class="border">
-    <ol class="nav nav-pills nav-stacked">
+    <ol class="nav nav-pills">
         <li class="active"><a href="#01">Introduction</a></li>
         {% if content.field_show_section_01 %}<li><a href="#02">About the location</a></li>{% endif %}
         {% if content.field_show_section_03 %}<li><a href="#03">About the project</a></li>{% endif %}
-        <li><a href="#04">Media & Resources</a></li>
+        {% if content.field_media_other[0] %}<li><a href="#04">Media & Resources</a></li>{% endif %}
         {% if content.field_show_section_04 %}<li><a href="#05">Artist information</a></li>{% endif %}
     </ol>
 </div>

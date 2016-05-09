@@ -66,14 +66,15 @@
  */
 #}
 <section class="container-fluid hero">
-    {{ content.field_poster_images[0] }}
-    <div class="hero-details border">
-        <h3>History & Context</h3>
-        <h1>{{ node.title.value }}</h1>
-    </div>
-    <div class="overlay"></div>
+    
+    <div style="background: url({{ file_url(content.field_poster_images['#items'].entity.uri.value) }});background-repeat: no-repeat;background-size: cover;width: 100%;height: 750px;">
+    	<div class="hero-details border">
+        	<h1>{{ node.title.value }}</h1>
+		</div>
+		<div class="overlay"></div>
+	</div>
 </section>
-<section class="page container">
+<section class="page container history-page">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
             {{ content.body }}
@@ -84,7 +85,7 @@
 </section>    
 <section class="artwork-array">
     <div class="container">
-        <div class="resources">
+        <div class="flex-container">
             {% for key, content in content.field_media_other if key|first != '#' %}
                 {% set image = content['#node'].field_thumbnail_image.entity.uri.value %}
                 {% set alt = content['#node'].field_thumbnail_image.alt %}

@@ -43,3 +43,24 @@
         pointer-events: none;
     }
 }
+
+
+h2.js-quickedit-page-title {
+	padding-top: 45px;
+}
+
+.dropdown-menu {
+
+	&>li {
+
+		&>a {
+			white-space: normal;
+		}
+	}
+}
+
+.navbar-right { 
+	.dropdown-menu {
+		left:0		
+	}
+}

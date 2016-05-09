@@ -1,9 +1,8 @@
-<div class="carousel-image border">
-    <img src="{{ file_url(content.field_poster_images.0['#item'].entity.uri.value) }}" alt="{{ content.field_poster_images.0['#item'].alt }}">
+<div class="carousel-image border" style="background-size:cover; background-image:url({{ file_url(content.field_poster_images.0['#item'].entity.uri.value) }})">
 </div>
 <div class="carousel-details-container">
-    <img id="map-{{ node.nid.value }}" alt="{{ node.title.value }}" />
-    <img class="map-marker" />
+    <a href="{{ url }}#map"><img id="map-{{ node.nid.value }}" alt="{{ node.title.value }}" /></a>
+    <a href="{{ url }}#map"><span class="map-marker" style="margin-top:0px;"></span></a>
     <script src='https://api.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
     <script>
         {% set field_location = content.field_location.0['#field_collection_item'] %}
@@ -11,13 +10,19 @@
         document.getElementById('map-{{ node.nid.value }}').src =
             'https://api.mapbox.com/v4/mapbox.streets/' +
             '{{ field_location.field_longitude.value }},{{ field_location.field_latitude.value }},15/' +
-            '720x250.png' +
+            '720x180.png' +
             '?access_token=' + L.mapbox.accessToken;
     </script>
     <div class="carousel-details">
         <h3>{{ content.field_artwork_type.0['#title'] }}</h3>
         <h1>{{ node.title.value }}</h1>
-        <p>{{ content.body }}</p>
+        {% for key, artist in content.field_artists if key|first != '#' %}
+			{% set artist = artist['#field_collection_item']%}
+			<h2 class="artist-name">By {{ artist.field_artist_name.value }}</h2>
+		{% endfor %}
+        {{ content.body }}
+        <br>
         <a href="{{ url }}" class="btn btn-default btn-lg btn-inverted">Explore this project <span class="arrow">&rarr;</span></a>
     </div>
 </div>
+

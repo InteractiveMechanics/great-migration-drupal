@@ -66,6 +66,7 @@
  */
 #}
 {% set field_location = content.field_location.0['#field_collection_item'] %}
+
 <div class="event row">
     <div class="col-xs-4 col-sm-3">
         <div class="date-stamp">
@@ -77,12 +78,21 @@
         <h5>{{ field_location.field_location_name.value }}</h5>
         <h1>{{ node.title[0].value }}</h1>
         
-        <a href="{{ content.field_link.0['#url'].uri }}" target="_blank">Attend this event</a>
-        <span class="divider hidden-xs"></span>
+        {% if content.field_link.0['#url'].uri %}
+       		<a href="{{ content.field_link.0['#url'].uri }}" target="_blank">Attend this event</a>
+  	   		<span class="divider hidden-xs"></span>
+       	{% endif %}
         {% if field_location.field_latitude.value and field_location.field_longitude.value %}
             <a href="https://www.google.com/maps/@{{ field_location.field_latitude.value  }},{{ field_location.field_longitude.value  }},15z" target="_blank">Get directions</a>
         {% else %}
             <a href="https://www.google.com/maps/place/{{ field_location.field_location_name.value|replace({' ': '+'}) }}" target="_blank">Get directions</a>
         {% endif %}
+        <span class="divider hidden-xs"></span>
+        <a target="_blank" 
+           href="https://twitter.com/home?status={{ node.title[0].value }} on {{ node.field_date[0].value|date("m/d/Y") }} at {{ field_location.field_location_name.value }}, see more at greatmigrationphl.org">Share on Twitter</a>
     </div>
+    
+    
+    
+    <br style="clear:right;" />
 </div>

@@ -62,43 +62,71 @@ nav.navbar {
         &.logo {
             padding: 10px;
             opacity: 1;
+            transform: rotate(-7deg);
 
             &:hover, &:focus, &:active {
-                transform: rotate(-4deg) translate(-5px, 0);
+                transform: none;
                 -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
                 -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
                 filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+                transform: rotate(0deg);
             }
 
             img {
                 max-height: 105px;
                 transition: 0.5s all;
-                transform: rotate(-3deg) translate(-5px, 0);
+                transform: none;
                 -moz-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
                 -webkit-filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
                 filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
             }
+            
+            @media screen and #{$screen-xs} {
+	            img {
+	        		max-height: 80px;    
+	        	}
+	        }
         }
     }
     .navbar-nav {
         > li {
-            &.open {
-                > a {
+	        
+            &.open,
+            &:hover {
+	            > a {
                     background: none;
                     border-bottom: none;
                 }
                 > ul {
                     padding: 0;
+                    display: block;
 
+                    @media screen and #{$screen-xs} {
+                        position: static;
+                        float: none;
+                        width: auto;
+                        margin-top: 0;
+                        background-color: transparent;
+                        border: 0;
+                        -webkit-box-shadow: none;
+                        box-shadow: none;
+                    }
                     @media screen and #{$screen-gtxs} {
-                        right: -80px;
-                        top: 120%;
+                        right: auto;
+                        top: 100%;
                         border-radius: 0;
                         border: none;
                         width: 260px;
+                        margin-left: -65px;
                     }
 
                     > li {
+	                    &:first-child {
+                            a {
+                                border-top: 1px solid $lightgray;
+                            }
+                        }
+                        
                         &:last-child {
                             a {
                                 border-bottom: none;
@@ -118,8 +146,7 @@ nav.navbar {
                             overflow: hidden;
 
                             @media screen and #{$screen-xs} {
-                                padding-top: 15px;
-                                padding-bottom: 15px;
+                                padding: 15px 30px;
                             }
                         }
                     }
@@ -204,10 +231,10 @@ nav.navbar {
             background: white;
             margin: 0 -30px;
             box-shadow: 0 5px 20px rgba(0,0,0,0);
-            transition: 0.5s all;
     
             &.in {
                 box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+                display: block!important;
             }
     
             > ul {

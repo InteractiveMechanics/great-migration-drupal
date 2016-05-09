@@ -1,4 +1,21 @@
 (function ($) {
+	
+	$('.page figure > img').click(function(){
+    	var image_link = window.location.hostname + $(this).attr('src');
+    	window.open('http://' + image_link, '_blank');
+	});
+	
+	$('.btn-search').click(function(){
+		var val = $('.search-txt').val();
+		if(val) {
+			var url = "http://dev.interactivemechanics.com/greatmigration/search/node?keys="+ val +"&f[0]=type:artwork&f[1]=type:history&f[2]=type:page&advanced-form=1"
+			window.location.href = url;	
+		}
+	});
+
+    if ($('.artwork-hero-inner').hasClass('preciousplaces')) {
+        $('body').addClass('preciousplaces');
+    }
 
     // If you're scrolling and not at the top of the page...
     $(window).scroll(function() {
@@ -10,14 +27,14 @@
     });
 
     // Rotate through images on the artwork page automagically
-    var images = $('.artwork-hero-image').find('img');
+    var images = $('.artwork-hero-image').find('div');
     if (images.length > 1) {
         var total = images.length;
         var count = 0;
 
         function changeImage() {
             images.removeClass('in');
-            $('.artwork-hero-image img:eq(' + count + ')').addClass('in');
+            $('.artwork-hero-image div:eq(' + count + ')').addClass('in');
 
             count++;
             if (count > total - 1){ count = 0; }
@@ -41,13 +58,16 @@
     // Launch galleries for video/images
     $('.launch-gallery').on('click tap', function() {
         var images = $(this).attr('data-src-images').split(',');
+        var html = $(this).attr('data-sub-html').split('$');
         var array = [];
-        $.each(images, function(i, val){
-            var json = {
-                "src": val
+        
+        for(i = 0; i < images.length; i++) {
+	        var json = {
+                "src": images[i],
+                "subHtml": html[i]
             };
             array.push(json);
-        });
+        }
         console.log(array);
         $(this).lightGallery({
             mode: 'lg-fade',
@@ -74,11 +94,13 @@
                 badge: 0,
                 byline: 0,
                 portrait: 0,
-                title: 0
+                title: 0,
+                loop: 1
             },
             dynamicEl: [{'src': video}]
         });
     });
+    
     $('.launch-audio').on('click tap', function() {
         var audio = $(this).attr('data-src-audio');
         $('#audio-player').removeClass('hidden').delay(100).queue(function (next) {
@@ -92,5 +114,5 @@
             });
         }); 
     });
-
+   
 })(jQuery);

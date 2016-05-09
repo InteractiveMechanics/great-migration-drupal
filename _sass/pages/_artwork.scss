@@ -1,11 +1,25 @@
+
+h2 {
+	
+	&.artist-name {
+		color: white !important;
+		font-size: 1.6em !important;
+		font-weight: bold !important;
+		text-transform: uppercase !important;
+		font-family: "Oswald", sans-serif !important;
+	}
+}
+
 #artwork-scrollspy {
     position: fixed !important;
     bottom: 30px;
-    left: 30px;
+    left: 0;
     background: rgba(0,0,0,0.65);
-    padding: 30px;
-    width: 220px;
+    padding: 20px;
+    width: 50%;
     z-index: 1001;
+    right:0;
+    margin: 0 auto;
 
     @media screen and #{$screen-ltmd} {
         display: none;
@@ -13,8 +27,12 @@
 
     .nav {
         list-style: disc;
-
+		text-align: center;
+		
         li {
+	            display: inline-block;
+				margin: 0 10px;
+				float: none;
             a {
                 color: white;
                 opacity: 0.65;
@@ -36,6 +54,12 @@
             }
         }
     }
+    
+    .nav-pills {
+	    >li {
+			float:none;	    
+	    }
+	}
 }
 
 #audio-player {
@@ -95,6 +119,7 @@
         p {
             clear: both;
             margin: 10px 0 20px;
+            text-align: left;
         }
     }
 }
@@ -110,12 +135,19 @@
         vertical-align: top;
 
         &.content-left {
-            padding-left: 60px;
+            padding-left: 30px;
         }
         &.content-right {
-            padding-right: 60px;
+            padding-right: 30px;
         }
     }
+    @media screen and (max-width: 950px) {
+	  	.content {
+	    	width: 100%;
+		}
+	}
+    
+    
     .images {
         width: 45%;
         display: inline-block;
@@ -131,6 +163,8 @@
                 transform: rotate(2deg) translateX(75px);
             }
         }
+        
+        
 
         img {
             border: 20px solid #EFEFDC;
@@ -142,4 +176,36 @@
             z-index: 3;
         }
     }
+    
+    @media screen and (max-width: 950px) {
+	  	.images {
+		  	width: 85%;
+		  	display: block;
+		  	margin: 40px auto;
+		  	
+		  	img {
+			  	border: 10px solid #EFEFDC;
+		  	}
+		  	
+		  	&.images-left img {
+	            transform: rotate(-2deg);
+	        }
+		  	
+		  	&.images-right {
+            	margin-left: auto !important;
+            	
+            	img {
+	                transform: rotate(2deg);
+	            }
+            }
+		}
+		
+	}
+}
+
+@media screen and (max-width: 950px) {
+    .artwork-hero-inner {
+		margin-bottom: 0px;
+		margin-top: 45px;
+	}
 }

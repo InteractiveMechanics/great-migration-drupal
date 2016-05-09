@@ -67,6 +67,7 @@
 #}
 {% set type = node.type[0].value.target_id %}
 {% set term = content.field_artwork_type.0['#url'].routeParameters['taxonomy_term'] %}
+
 <a class="artwork-container {% if term == 2 %}preciousplaces{% else %}{{ type }}{% endif %}" 
     {% if type == "events" %}
         href="{{ content.field_link.0['#url'].uri }}" target="_blank"
@@ -77,7 +78,7 @@
     <div class="artwork-content">
         {% if type == "artwork" %}
             {% if term == 1 %}
-                <h4>{{ content.field_artists.0['#field_collection_item'].field_artist_name.value }}</h4>
+                <h4>Art Works</h4>
             {% elseif term == 2 %}
                 <h4>{{ content.field_artwork_type.0['#title'] }}</h4>
             {% endif %}

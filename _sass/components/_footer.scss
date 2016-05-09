@@ -30,5 +30,19 @@ footer {
                 color: darken($midgray, 10%);
             }
         }
+        
+        @media screen and #{$screen-xs} {
+        	&.funded-by {
+	       		a {
+		    	    display: block;
+					margin-top: 4px;
+	        	}
+        	}
+        }
+    }
+    img {
+        max-width: 100px;
+        height: auto;
+        margin: 15px 5px 0;
     }
 }

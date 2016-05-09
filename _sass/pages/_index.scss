@@ -28,15 +28,11 @@
         width: 100%;
         text-align: center;
         color: white;
-        display: block;
+        display: inline-block;
         cursor: pointer;
         position: relative;
         margin: 15px 0;
         min-height: 200px;
-
-        &:first-of-type {
-            margin-top: 0;
-        }
 
         img {
             position: relative;
