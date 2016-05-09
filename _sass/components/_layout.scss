@@ -101,12 +101,14 @@ img {
 		width: 108px;
 		opacity: .5;	
 		transition: opacity .5s;
-
 	}
     &.scribe-logo {
         width: 85px;
+        opacity: .5;	
+		transition: opacity .5s;
     }
 	
+    &.scribe-logo:hover,
 	&.pew-logo:hover {
 		opacity: 1;	
 	}

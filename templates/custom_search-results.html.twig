@@ -1,0 +1,30 @@
+
+
+<div class="container">
+
+
+	{% if not items is empty %}
+	
+		<div class="row">
+			    
+		    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 search-item">
+		    	<h1>Search Results</h1>
+		    </div>
+		    
+		</div>
+		
+		{% for item in items %}
+			<div class="search row">
+			    
+			    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 search-item">
+			    	<label>{{ item['#result'].type }}</label>
+			    	<h3>
+						<a href="{{ item['#result'].link }}">{{ item['#result'].title }}</a>
+				   	</h3>
+			    </div>
+			    
+			</div>
+		{% endfor %}
+	{% endif %}
+
+</div>
