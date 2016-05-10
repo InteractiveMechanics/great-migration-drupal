@@ -113,11 +113,12 @@ nav.navbar {
                     }
                     @media screen and #{$screen-gtxs} {
                         right: auto;
+                        left: 50%;
                         top: 100%;
                         border-radius: 0;
                         border: none;
                         width: 260px;
-                        margin-left: -65px;
+                        margin-left: -130px;
                     }
 
                     > li {

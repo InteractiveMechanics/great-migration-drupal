@@ -165,10 +165,10 @@ main {
     width: auto; }
 
 .lg-backdrop {
-  background-color: #647946 !important; }
+  background-color: #8DAC62 !important; }
 
 body.preciousplaces .lg-backdrop {
-  background-color: #7A4B2D !important; }
+  background-color: #e56e4a !important; }
 
 img.pew-logo {
   width: 108px;
@@ -259,11 +259,12 @@ nav.navbar {
     @media screen and (min-width: 768px) {
       nav.navbar .navbar-nav > li.open > ul, nav.navbar .navbar-nav > li:hover > ul {
         right: auto;
+        left: 50%;
         top: 100%;
         border-radius: 0;
         border: none;
         width: 260px;
-        margin-left: -65px; } }
+        margin-left: -130px; } }
     nav.navbar .navbar-nav > li.open > ul > li:first-child a, nav.navbar .navbar-nav > li:hover > ul > li:first-child a {
       border-top: 1px solid #f1f2f2; }
     nav.navbar .navbar-nav > li.open > ul > li:last-child a, nav.navbar .navbar-nav > li:hover > ul > li:last-child a {
@@ -935,7 +936,8 @@ h2.artist-name {
   width: 50%;
   z-index: 1001;
   right: 0;
-  margin: 0 auto; }
+  margin: 0 auto;
+  display: none; }
   @media screen and (max-width: 991px) {
     #artwork-scrollspy {
       display: none; } }
