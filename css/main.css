@@ -57,6 +57,10 @@ p {
   line-height: 2.1;
   margin-bottom: 25px; }
 
+.page li {
+  font-size: 1.8rem;
+  line-height: 2.1; }
+
 a {
   text-decoration: none;
   transition: 0.5s all;
@@ -163,6 +167,9 @@ main {
       margin-right: 0; } }
   .align-left img {
     width: auto; }
+
+#search-form + h2 {
+  display: none; }
 
 .lg-backdrop {
   background-color: #8DAC62 !important; }
