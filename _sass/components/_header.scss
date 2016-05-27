@@ -90,7 +90,7 @@ nav.navbar {
     }
     .navbar-nav {
         > li {
-	        
+
             &.open,
             &:hover {
 	            > a {
@@ -137,10 +137,6 @@ nav.navbar {
                         > a.is-active {
                             background: $accentgreen;
                             color: white;
-                            
-                            &.preciousplaces {
-                                background: #e56e4a;
-                            }
                         }
 
                         > a {
@@ -165,6 +161,11 @@ nav.navbar {
                     @media screen and #{$screen-gtxs} {
                         border-bottom: 3px solid $accentgreen;
                     }
+                    &.preciousplaces {
+                        @media screen and #{$screen-gtxs} {
+                            border-bottom: 3px solid #e56e4a;
+                        }
+                    }
                 }
             }
 
@@ -179,6 +180,12 @@ nav.navbar {
                     top: 0;
                 }
 
+                &.preciousplaces {
+                    + ul a.is-active {
+                        color: white;
+                        background: #e56e4a;
+                    }
+                }
                 &.is-active {
                     background: none;
                     color: $black;

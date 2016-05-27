@@ -279,8 +279,6 @@ nav.navbar {
     nav.navbar .navbar-nav > li.open > ul > li > a.is-active, nav.navbar .navbar-nav > li:hover > ul > li > a.is-active {
       background: #8DAC62;
       color: white; }
-      nav.navbar .navbar-nav > li.open > ul > li > a.is-active.preciousplaces, nav.navbar .navbar-nav > li:hover > ul > li > a.is-active.preciousplaces {
-        background: #e56e4a; }
     nav.navbar .navbar-nav > li.open > ul > li > a, nav.navbar .navbar-nav > li:hover > ul > li > a {
       padding: 10px 20px;
       border-bottom: 1px solid #f1f2f2;
@@ -296,6 +294,9 @@ nav.navbar {
     @media screen and (min-width: 768px) {
       nav.navbar .navbar-nav > li.active > a {
         border-bottom: 3px solid #8DAC62; } }
+    @media screen and (min-width: 768px) {
+      nav.navbar .navbar-nav > li.active > a.preciousplaces {
+        border-bottom: 3px solid #e56e4a; } }
   nav.navbar .navbar-nav > li > a {
     padding: 40px 0 6px;
     margin: 0 15px;
@@ -305,6 +306,9 @@ nav.navbar {
       nav.navbar .navbar-nav > li > a {
         position: relative;
         top: 0; } }
+    nav.navbar .navbar-nav > li > a.preciousplaces + ul a.is-active {
+      color: white;
+      background: #e56e4a; }
     nav.navbar .navbar-nav > li > a.is-active {
       background: none;
       color: #231f20; }
@@ -426,7 +430,7 @@ footer {
   .carousel-inner .artwork-hero-image {
     width: 50%;
     height: 750px; }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 991px) {
       .artwork-hero-inner .carousel-image,
       .artwork-hero-inner .artwork-hero-image,
       .carousel-inner .carousel-image,
@@ -461,7 +465,7 @@ footer {
     top: 0;
     background: #8DAC62;
     bottom: 0; }
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 991px) {
       .artwork-hero-inner .carousel-details-container,
       .artwork-hero-inner .artwork-hero-details-container,
       .carousel-inner .carousel-details-container,
@@ -475,7 +479,7 @@ footer {
     .carousel-inner .artwork-hero-details-container img {
       width: 100%;
       border: none; }
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 991px) {
         .artwork-hero-inner .carousel-details-container img,
         .artwork-hero-inner .artwork-hero-details-container img,
         .carousel-inner .carousel-details-container img,
