@@ -529,12 +529,12 @@
 </div>
 
 
-<div id="artwork-scrollspy" class="border">
+<div id="artwork-scrollspy" class="border {% if content.field_artwork_type.0['#url'].routeParameters['taxonomy_term'] == 2 %}preciousplaces{% endif %}">
     <ol class="nav nav-pills">
-        <li class="active"><a href="#01">Introduction</a></li>
-        {% if content.field_show_section_01 %}<li><a href="#02">About the location</a></li>{% endif %}
-        {% if content.field_show_section_03 %}<li><a href="#03">About the project</a></li>{% endif %}
-        {% if content.field_media_other[0] %}<li><a href="#04">Media & Resources</a></li>{% endif %}
-        {% if content.field_show_section_04 %}<li><a href="#05">Artist information</a></li>{% endif %}
+        <li class="active"><a href="#01">Intro<span class="hidden-xs">duction</span></a></li>
+        {% if content.field_show_section_01 %}<li><a href="#02"><span class="hidden-xs">The </span>Location</a></li>{% endif %}
+        {% if content.field_show_section_03 %}<li><a href="#03"><span class="hidden-xs">The </span>Project</a></li>{% endif %}
+        {% if content.field_media_other[0] %}<li><a href="#04"><span class="hidden-xs">Media & </span>Resources</a></li>{% endif %}
+        {% if content.field_show_section_04 %}<li><a href="#05"><span class="hidden-xs">The </span>Artist</a></li>{% endif %}
     </ol>
 </div>

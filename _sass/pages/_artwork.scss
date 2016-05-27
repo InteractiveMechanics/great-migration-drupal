@@ -12,15 +12,31 @@ h2 {
 
 #artwork-scrollspy {
     position: fixed !important;
-    bottom: 30px;
-    left: 0;
+    top: 100px;
+    left: 30px;
     background: rgba(0,0,0,0.65);
-    padding: 20px;
-    width: 50%;
+    padding: 10px 0;
     z-index: 1001;
-    right:0;
+    right: 30px;
     margin: 0 auto;
-    display: none;
+    transition: 0.5s all;
+
+    &.scrolled {
+        top: 80px;
+    }
+    &.preciousplaces {
+        .nav li.active > a {
+            color: $accentred;
+        }
+    }
+
+    &.border:after {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        opacity: 0.5;
+    }
 
     @media screen and #{$screen-ltmd} {
         display: none;
@@ -31,9 +47,10 @@ h2 {
 		text-align: center;
 		
         li {
-	            display: inline-block;
-				margin: 0 10px;
-				float: none;
+	        display: inline-block;
+            margin: 0 10px;
+            float: none;
+
             a {
                 color: white;
                 opacity: 0.65;
@@ -48,9 +65,8 @@ h2 {
             &.active {
                 a {
                     background: none;
-                    color: white;
+                    color: $accentgreen;
                     opacity: 1;
-                    padding-left: 15px
                 }
             }
         }

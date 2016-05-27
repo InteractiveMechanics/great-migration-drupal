@@ -137,6 +137,10 @@ nav.navbar {
                         > a.is-active {
                             background: $accentgreen;
                             color: white;
+                            
+                            &.preciousplaces {
+                                background: #e56e4a;
+                            }
                         }
 
                         > a {

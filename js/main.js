@@ -21,8 +21,10 @@
     $(window).scroll(function() {
         if(!$(window).scrollTop()) {
             $('nav.navbar').removeClass('scrolled');
+            $('#artwork-scrollspy').removeClass('scrolled');
         } else {
             $('nav.navbar').addClass('scrolled');
+            $('#artwork-scrollspy').addClass('scrolled');
         }
     });
 

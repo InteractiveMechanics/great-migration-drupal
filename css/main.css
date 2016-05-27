@@ -279,6 +279,8 @@ nav.navbar {
     nav.navbar .navbar-nav > li.open > ul > li > a.is-active, nav.navbar .navbar-nav > li:hover > ul > li > a.is-active {
       background: #8DAC62;
       color: white; }
+      nav.navbar .navbar-nav > li.open > ul > li > a.is-active.preciousplaces, nav.navbar .navbar-nav > li:hover > ul > li > a.is-active.preciousplaces {
+        background: #e56e4a; }
     nav.navbar .navbar-nav > li.open > ul > li > a, nav.navbar .navbar-nav > li:hover > ul > li > a {
       padding: 10px 20px;
       border-bottom: 1px solid #f1f2f2;
@@ -356,23 +358,23 @@ footer {
     font-family: "Oswald", sans-serif;
     font-size: 2.1rem;
     text-transform: uppercase;
-    color: #A7A9AC; }
+    color: #8d8f93; }
   footer h2 {
     margin: 0 0 20px;
     font-size: 1.6rem;
     font-style: italic;
-    color: #A7A9AC; }
+    color: #8d8f93; }
   footer p {
     font-size: 1.2rem;
-    color: #A7A9AC;
+    color: #8d8f93;
     margin: 0 0 5px;
     line-height: 1.2; }
     footer p a {
-      color: #A7A9AC;
+      color: #8d8f93;
       font-weight: bold;
       text-decoration: underline; }
       footer p a:hover, footer p a:focus, footer p a:active {
-        color: #8d8f93; }
+        color: #73767a; }
     @media screen and (max-width: 767px) {
       footer p.funded-by a {
         display: block;
@@ -936,15 +938,24 @@ h2.artist-name {
 
 #artwork-scrollspy {
   position: fixed !important;
-  bottom: 30px;
-  left: 0;
+  top: 100px;
+  left: 30px;
   background: rgba(0, 0, 0, 0.65);
-  padding: 20px;
-  width: 50%;
+  padding: 10px 0;
   z-index: 1001;
-  right: 0;
+  right: 30px;
   margin: 0 auto;
-  display: none; }
+  transition: 0.5s all; }
+  #artwork-scrollspy.scrolled {
+    top: 80px; }
+  #artwork-scrollspy.preciousplaces .nav li.active > a {
+    color: #F9C7A7; }
+  #artwork-scrollspy.border:after {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    opacity: 0.5; }
   @media screen and (max-width: 991px) {
     #artwork-scrollspy {
       display: none; } }
@@ -964,9 +975,8 @@ h2.artist-name {
           opacity: 1; }
       #artwork-scrollspy .nav li.active a {
         background: none;
-        color: white;
-        opacity: 1;
-        padding-left: 15px; }
+        color: #8DAC62;
+        opacity: 1; }
   #artwork-scrollspy .nav-pills > li {
     float: none; }
 
